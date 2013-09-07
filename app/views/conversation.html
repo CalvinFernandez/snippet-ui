@@ -2,8 +2,8 @@
   <div class='container'>
     <div class='row'>
       <div class='col-xs-2 vertical-align-nav'>
-        <a class='btn' href='/'>
-          <span class='glyphicon glyphicon-chevron-left'></span>
+        <a href='/' type="button" class="btn btn-primary">
+          <small>Inbox</small>
         </a>
       </div>
       <div class='col-xs-8 center-text'>
@@ -16,7 +16,7 @@
 </div>
 
 
-<div ng-hide='snippetPanel' class='container navfix-top'>
+<div ng-hide='snippetPanel' class='container navfix-top double-navfix-bottom'>
   <div ng-repeat='message in conversation.messages' class='row'>
     <div ng-show='message.author.number === me.number'> 
       <div class='mine'>
@@ -68,7 +68,7 @@
   </div>
 </div>
 
-<div ng-show='snippetPanel' class='container navfix-top'>
+<div ng-show='snippetPanel' class='container navfix-top navfix-bottom'>
   <div  ng-repeat='song in songs' class='row song'>
     <div ng-click='selectSong(song)'class='col-xs-12'>
       <h2> {{song.name}} </h2>
@@ -86,11 +86,11 @@
 <div ng-show='newMessageSong && !snippetPanel' class='songFooter alert-info vertical-align-nav'>
   <div class='container'>
     <div class='row'>
-      <div class='col-xs-1'>
+      <div class='col-xs-2'>
         <span class='glyphicon glyphicon-music'></span>
       </div>
-      <div class='col-xs-9 center-text'>
-        {{newMessageSong.name}}    
+      <div class='col-xs-8 no-wrap overflow-ellipsis'>
+        {{newMessageSong.name}}, {{newMessageSong.artist}}    
       </div>
       <div ng-click="newMessageSong = ''" class='col-xs-2'>
         <span class='glyphicon glyphicon-remove'></span>
