@@ -12,6 +12,9 @@ angular.module('snippetUiApp')
     $scope.newMessageText = '';
     $scope.newMessageSong = '';
 
+    //  Update unread convo //
+    $scope.conversation.unread = false; 
+
     $scope.selectSong = function(song) {
       $scope.snippetPanel = !$scope.snippetPanel; 
       $scope.newMessageSong = song;  
