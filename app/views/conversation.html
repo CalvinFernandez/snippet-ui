@@ -1,0 +1,118 @@
+<div class='navbar navbar-inverse navbar-fixed-top'>
+  <div class='container'>
+    <div class='row'>
+      <div class='col-xs-2 vertical-align-nav'>
+        <a class='btn' href='/'>
+          <span class='glyphicon glyphicon-chevron-left'></span>
+        </a>
+      </div>
+      <div class='col-xs-8 center-text'>
+        <h3 class='vertical-align-nav-text'> 
+          {{conversation.recipient.name}}
+        </h3>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div ng-hide='snippetPanel' class='container navfix-top'>
+  <div ng-repeat='message in conversation.messages' class='row'>
+    <div ng-show='message.author.number === me.number'> 
+      <div class='mine'>
+        <div class='col-xs-12'>
+          <blockquote>
+            <p>
+              {{ message.text }}
+              <div ng-show='message.song' ng-click='message.listened = true; toggleSong(message.song)'> 
+                <small  ng-show='message.listened'> listened <span class='glyphicon glyphicon-play'></span></small>
+                <small ng-hide='message.listened'> click to listen <span class='glyphicon glyphicon-play'></span></small>
+              </div>
+            </p>
+          </blockquote>
+        </div>
+      </div>
+    </div>
+    <div ng-show='message.author.number !== me.number'>
+      <div class='theirs'>
+        <div class='col-xs-12'>
+          <blockquote class='pull-right'>
+            <p>
+              {{ message.text }}
+              <div ng-show='message.song' ng-click='message.listened = true; toggleSong(message.song)'> 
+                <small ng-show='message.listened'> listened <span class='glyphicon glyphicon-play'></span></small>
+                <small ng-hide='message.listened'> click to listen <span class='glyphicon glyphicon-play'></span></small>
+              </div>
+            </p>
+          </blockquote>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div ng-show='snippetPanel' class='navbar navbar-inverse navfix-top'>
+  <div class='container'>
+    <div class='row'>
+      <div ng-click='snippetPanel = !snippetPanel' class='col-xs-3 vertical-align-nav'>
+        <button  type="button" class="btn btn-primary">
+          <small>{{conversation.recipient.name}}</small>
+      </button>
+      </div>
+      <div class='col-xs-9'>
+        <h3 class='vertical-align-nav-text'> 
+          Select a Song
+        </h3>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div ng-show='snippetPanel' class='container navfix-top'>
+  <div  ng-repeat='song in songs' class='row song'>
+    <div ng-click='selectSong(song)'class='col-xs-12'>
+      <h2> {{song.name}} </h2>
+      <small> {{song.artist}}, {{song.album}}</small>
+    </div>
+    <div ng-hide='stopped' ng-click='stopped = !stopped; toggleSong(song)' class='col-xs-3'>
+      <i class="icon-play icon-3x"></i> 
+    </div>
+    <div ng-show='stopped' ng-click='stopped = !stopped; toggleSong(song)' class='col-xs-3'>
+      <i class="icon-pause icon-3x"></i> 
+    </div>
+  </div>
+</div>
+
+<div ng-show='newMessageSong && !snippetPanel' class='songFooter alert-info vertical-align-nav'>
+  <div class='container'>
+    <div class='row'>
+      <div class='col-xs-1'>
+        <span class='glyphicon glyphicon-music'></span>
+      </div>
+      <div class='col-xs-9 center-text'>
+        {{newMessageSong.name}}    
+      </div>
+      <div ng-click="newMessageSong = ''" class='col-xs-2'>
+        <span class='glyphicon glyphicon-remove'></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div ng-hide='snippetPanel' class='footer'>
+  <div class='container'> 
+    <div class='row vertical-align-nav'>
+      <div class='col-xs-2'>
+        <button ng-click='snippetPanel = !snippetPanel' type="button" class="btn btn-primary">
+          <span class='glyphicon glyphicon-play-circle'></span>
+        </button>
+      </div>
+      <div class='col-xs-7'>
+        <input ng-model='newMessageText' type="text" class="input-style">
+      </div>
+      <div class='col-xs-3'>
+        <button ng-click='sendMessage()' type="button" class="btn btn-primary">Send</button>
+      </div>
+    </div>
+  </div>
+<div>

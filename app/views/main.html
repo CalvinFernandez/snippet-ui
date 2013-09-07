@@ -1,9 +1,93 @@
-<div class="hero-unit">
-  <h1>'Allo, 'Allo!</h1>
-  <p>You now have</p>
-  <ul>
-      <li ng-repeat="thing in awesomeThings">{{thing}}</li>
-  </ul>
-  <p>installed.</p>
-  <h3>Enjoy coding! - Yeoman</h3>
+<div class='navbar navbar-inverse navbar-fixed-top'>
+  <div class='container'>
+    <div class='row'>
+      <div class='col-xs-12 center-text'>
+        <h3 class='vertical-align-nav-text'> Inbox </h3>
+      </div>
+    </div>
+  </div>
 </div>
+
+<div class='container navfix-top'>
+  <div  ng-repeat='convo in conversations' class='row message'>
+    <a class='no-styling' href='#/{{$index}}'>
+      <div ng-show='convo.unread' class='col-xs-1 vertical-align'>
+        <span class='glyphicon glyphicon-unchecked unread'></span>
+      </div>
+      <div class='col-xs-11'>
+        <h1>
+          {{convo.recipient.name}}
+        </h1>
+        <p>
+          {{convo.messages[convo.messages.length - 1].text}}
+        </p>
+      </div>
+    </a>
+  </div>
+  <!--
+  <div class='row message'>
+    <div class='col-xs-1 vertical-align'>
+      <span class='glyphicon glyphicon-unchecked unread'></span>
+    </div>
+    <div class='col-xs-11'>
+      <h1>
+        Libby
+      </h1>
+      <p>
+        Have a great birthday
+      </p>
+    </div>
+  </div>
+  <div class='row message'>
+      <div class='col-xs-1 vertical-align'>
+        <span class='glyphicon glyphicon-unchecked unread'></span>
+      </div>
+      <div class='col-xs-11'>
+        <h1>
+          Libby
+        </h1>
+        <p>
+          Have a great birthday
+        </p>
+      </div>
+    </div>
+  <div class='row message'>
+      <div class='col-xs-1 vertical-align'>
+        <span class='glyphicon glyphicon-unchecked unread'></span>
+      </div>
+      <div class='col-xs-11'>
+        <h1>
+          Libby
+        </h1>
+        <p>
+          Have a great birthday
+        </p>
+      </div>
+    </div>
+  <div class='row message'>
+    <div class='col-xs-1 vertical-align'>
+      <span class='glyphicon glyphicon-unchecked unread'></span>
+    </div>
+    <div class='col-xs-11'>
+      <h1>
+        Libby
+      </h1>
+      <p>
+        Have a great birthday
+      </p>
+    </div>
+  </div>
+  <div class='row message'>
+    <div class='col-xs-1 vertical-align'>
+      <span class='glyphicon glyphicon-unchecked unread'></span>
+    </div>
+    <div class='col-xs-11'>
+      <h1>
+        Libby
+      </h1>
+      <p>
+        Have a great birthday
+      </p>
+    </div>
+  </div>
+</div> -->

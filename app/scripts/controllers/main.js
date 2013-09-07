@@ -1,10 +1,9 @@
 'use strict';
 
 angular.module('snippetUiApp')
-  .controller('MainCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
+  .controller('MainCtrl', function ($scope, Conversations) {
+
+  $scope.conversations = Conversations.all();
+  $scope.me = Conversations.me();
+
+});
