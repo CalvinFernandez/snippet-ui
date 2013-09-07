@@ -93,7 +93,7 @@ body {
   bottom: 50px;
   left:0;
   width: 100%;
-  min-height: 50px;
+  height: 50px;
   margin: 0px;
 }
 
@@ -165,4 +165,21 @@ textarea.input-style {
 a.no-styling {
 color: inherit;
 text-decoration: none !important;
+}
+
+.no-wrap {
+  white-space: nowrap;       
+}
+
+.overflow-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.navfix-bottom {
+  margin-bottom: 50px;
+}
+
+.double-navfix-bottom {
+  margin-bottom: 100px;
 }
