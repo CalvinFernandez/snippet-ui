@@ -1,7 +1,7 @@
 // Generated on 2013-09-04 using generator-angular 0.3.1
 'use strict';
-var LIVERELOAD_PORT = 35729;
-var lrSnippet = require('connect-livereload')({ port: LIVERELOAD_PORT });
+//var LIVERELOAD_PORT = 35729;
+//var lrSnippet = require('connect-livereload')({ port: LIVERELOAD_PORT });
 var mountFolder = function (connect, dir) {
   return connect.static(require('path').resolve(dir));
 };
@@ -15,6 +15,7 @@ var mountFolder = function (connect, dir) {
 module.exports = function (grunt) {
   // load all grunt tasks
   require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
+  grunt.loadNpmTasks('grunt-forever');
 
   // configurable paths
   var yeomanConfig = {
@@ -36,18 +37,20 @@ module.exports = function (grunt) {
       coffeeTest: {
         files: ['test/spec/{,*/}*.coffee'],
         tasks: ['coffee:test']
-      },
+      }//,
+	/*
       livereload: {
         options: {
           livereload: LIVERELOAD_PORT
         },
         files: [
-          '<%= yeoman.app %>/{,*/}*.html',
-          '{.tmp,<%= yeoman.app %>}/styles/{,*/}*.css',
-          '{.tmp,<%= yeoman.app %>}/scripts/{,*/}*.js',
-          '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
-        ]
-      }
+		*/
+          //'<%= yeoman.app %>/{,*/}*.html',
+          //'{.tmp,<%= yeoman.app %>}/styles/{,*/}*.css',
+          //'{.tmp,<%= yeoman.app %>}/scripts/{,*/}*.js',
+          //'<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
+        //]
+      //}
     },
     connect: {
       options: {
@@ -59,7 +62,7 @@ module.exports = function (grunt) {
         options: {
           middleware: function (connect) {
             return [
-              lrSnippet,
+              //lrSnippet,
               mountFolder(connect, '.tmp'),
               mountFolder(connect, yeomanConfig.app)
             ];
