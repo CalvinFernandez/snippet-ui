@@ -11,83 +11,16 @@
 <div class='container navfix-top'>
   <div  ng-repeat='convo in conversations' class='row message'>
     <a class='no-styling' href='#/{{$index}}'>
-      <div ng-show='convo.unread' class='col-xs-1 vertical-align'>
-        <span class='glyphicon glyphicon-unchecked unread'></span>
+      <div  class='col-xs-2 vertical-align'>
+        <span ng-show='convo.unread' class='glyphicon glyphicon-unchecked unread'></span>
       </div>
-      <div class='col-xs-11'>
-        <h1>
+      <div class='col-xs-9'>
+        <h1 class='overflow-ellipsis no-wrap'>
           {{convo.recipient.name}}
         </h1>
-        <p>
+        <p class='overflow-ellipsis no-wrap'>
           {{convo.messages[convo.messages.length - 1].text}}
         </p>
       </div>
     </a>
   </div>
-  <!--
-  <div class='row message'>
-    <div class='col-xs-1 vertical-align'>
-      <span class='glyphicon glyphicon-unchecked unread'></span>
-    </div>
-    <div class='col-xs-11'>
-      <h1>
-        Libby
-      </h1>
-      <p>
-        Have a great birthday
-      </p>
-    </div>
-  </div>
-  <div class='row message'>
-      <div class='col-xs-1 vertical-align'>
-        <span class='glyphicon glyphicon-unchecked unread'></span>
-      </div>
-      <div class='col-xs-11'>
-        <h1>
-          Libby
-        </h1>
-        <p>
-          Have a great birthday
-        </p>
-      </div>
-    </div>
-  <div class='row message'>
-      <div class='col-xs-1 vertical-align'>
-        <span class='glyphicon glyphicon-unchecked unread'></span>
-      </div>
-      <div class='col-xs-11'>
-        <h1>
-          Libby
-        </h1>
-        <p>
-          Have a great birthday
-        </p>
-      </div>
-    </div>
-  <div class='row message'>
-    <div class='col-xs-1 vertical-align'>
-      <span class='glyphicon glyphicon-unchecked unread'></span>
-    </div>
-    <div class='col-xs-11'>
-      <h1>
-        Libby
-      </h1>
-      <p>
-        Have a great birthday
-      </p>
-    </div>
-  </div>
-  <div class='row message'>
-    <div class='col-xs-1 vertical-align'>
-      <span class='glyphicon glyphicon-unchecked unread'></span>
-    </div>
-    <div class='col-xs-11'>
-      <h1>
-        Libby
-      </h1>
-      <p>
-        Have a great birthday
-      </p>
-    </div>
-  </div>
-</div> -->
