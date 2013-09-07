@@ -47,5 +47,8 @@ angular.module('snippetUiApp')
 
       $scope.conversation.messages.push(newMessage);
 
+      //  Reset ui values //
+      $scope.newMessageSong = '';
+      $scope.newMessageText = '';
     }
   });
