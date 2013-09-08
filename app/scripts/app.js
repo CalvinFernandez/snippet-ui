@@ -7,6 +7,10 @@ angular.module('snippetUiApp', ['ngRoute', 'ngAnimate'])
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
+      .when('/contacts', {
+        templateUrl: 'views/contacts.html',
+        controller: 'ContactsCtrl'
+      })
       .when('/:number', {
         templateUrl: 'views/conversation.html',
         controller: 'ConversationCtrl'
