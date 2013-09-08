@@ -24,9 +24,8 @@
           <blockquote>
             <p>
               {{ message.text }}
-              <div ng-show='message.song' ng-click='message.listened = true; toggleSong(message.song)'> 
-                <small  ng-show='message.listened'> listened <span class='glyphicon glyphicon-play'></span></small>
-                <small ng-hide='message.listened'> click to listen <span class='glyphicon glyphicon-play'></span></small>
+              <div ng-show='message.song'> 
+                <small> click to listen <play-button src='message.song.src' size='0'></play-button></small>
               </div>
             </p>
           </blockquote>
@@ -39,9 +38,8 @@
           <blockquote class='pull-right'>
             <p>
               {{ message.text }}
-              <div ng-show='message.song' ng-click='message.listened = true; toggleSong(message.song)'> 
-                <small ng-show='message.listened'> listened <span class='glyphicon glyphicon-play'></span></small>
-                <small ng-hide='message.listened'> click to listen <span class='glyphicon glyphicon-play'></span></small>
+              <div ng-show='message.song'> 
+                <small> click to listen <play-button src='message.song.src' size='0'></play-button></small>
               </div>
             </p>
           </blockquote>
@@ -69,25 +67,18 @@
 </div>
 
 <div ng-show='snippetPanel' class='container navfix-top navfix-bottom'>
-  <div  ng-repeat='song in songs' class='row song'>
-    <div ng-click='selectSong(song)'class='col-xs-12'>
-      <h2> {{song.name}} </h2>
-      <small> {{song.artist}}, {{song.album}}</small>
-    </div>
-    <div ng-hide='stopped' ng-click='stopped = !stopped; toggleSong(song)' class='col-xs-3'>
-      <i class="icon-play icon-3x"></i> 
-    </div>
-    <div ng-show='stopped' ng-click='stopped = !stopped; toggleSong(song)' class='col-xs-3'>
-      <i class="icon-pause icon-3x"></i> 
-    </div>
-  </div>
+  <ul>
+    <li class='no-styling message row' ng-repeat='song in songs'>
+    <div li-song></div>
+    </li>
+  </ul>
 </div>
+
 
 <div ng-show='newMessageSong && !snippetPanel' class='songFooter alert-info vertical-align-nav'>
   <div class='container'>
     <div class='row'>
       <div class='col-xs-2'>
-        <span class='glyphicon glyphicon-music'></span>
       </div>
       <div class='col-xs-8 no-wrap overflow-ellipsis'>
         {{newMessageSong.name}}, {{newMessageSong.artist}}   
@@ -115,4 +106,4 @@
       </div>
     </div>
   </div>
-<div>
+</div>
