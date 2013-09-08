@@ -18,20 +18,7 @@ angular.module('snippetUiApp')
     $scope.selectSong = function(song) {
       $scope.snippetPanel = !$scope.snippetPanel; 
       $scope.newMessageSong = song;  
-      $scope.pauseSong(song);
     };
-
-    $scope.toggleSong = function(song) {
-      if (song.element.paused) {
-        song.element.play();
-      } else  {
-        song.element.pause();  
-      }
-    }
-
-    $scope.pauseSong = function(song) {
-      song.element.pause();
-    }
 
     $scope.sendMessage = function() {
 

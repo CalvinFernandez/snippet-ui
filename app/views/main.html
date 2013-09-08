@@ -1,26 +1,22 @@
 <div class='navbar navbar-inverse navbar-fixed-top'>
   <div class='container'>
     <div class='row'>
-      <div class='col-xs-12 center-text'>
+      <div class='col-xs-2'>
+      </div>
+      <div class='col-xs-8 center-text'>
         <h3 class='vertical-align-nav-text'> Inbox </h3>
+      </div>
+      <div class='col-xs-2 vertical-align-nav'>
+        <button type="button" class="btn btn-primary btn-sm"><i class='icon-plus'></i></button>
       </div>
     </div>
   </div>
 </div>
 
 <div class='container navfix-top'>
-  <div  ng-repeat='convo in conversations' class='row message'>
-    <a class='no-styling' href='#/{{$index}}'>
-      <div  class='col-xs-2 vertical-align'>
-        <span ng-show='convo.unread' class='glyphicon glyphicon-unchecked unread'></span>
-      </div>
-      <div class='col-xs-9'>
-        <h1 class='overflow-ellipsis no-wrap'>
-          {{convo.recipient.name}}
-        </h1>
-        <p class='overflow-ellipsis no-wrap'>
-          {{convo.messages[convo.messages.length - 1].text}}
-        </p>
-      </div>
-    </a>
-  </div>
+  <ul class='row'>
+    <li class='no-styling message row' ng-repeat='convo in conversations'>
+      <div li-conversation></div>
+    </li>
+  </ul>
+</div>
