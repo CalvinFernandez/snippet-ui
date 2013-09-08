@@ -22,7 +22,7 @@ angular.module('snippetUiApp')
         $scope.iconSize = sizes[$scope.size];
 
         $scope.playing = false;
-        $scope.loaded = false;
+        $scope.loaded = true; //false
 
         $scope.audioElement.addEventListener('ended', function() {
           //
@@ -34,6 +34,12 @@ angular.module('snippetUiApp')
             });
         });
 
+         //
+         // Removed because doesn't automatically load in mobile. 
+         // Audio must be user initialized
+         //
+         
+        /*
         $scope.audioElement.addEventListener('canplaythrough', function() {
           //
           //  Wait for loading event to finish before allowing 
@@ -44,6 +50,7 @@ angular.module('snippetUiApp')
               $scope.loaded = true;
             });
         });
+        */
 
         $scope.audioElement.src = $scope.src;  
       },
