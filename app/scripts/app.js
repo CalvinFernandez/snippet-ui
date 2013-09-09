@@ -1,6 +1,11 @@
 'use strict';
 
-angular.module('snippetUiApp', ['ngRoute', 'ngAnimate'])
+angular.module('snippetUiApp', ['ui.router'])
+  .run(function($rootScope, $state, $stateParams) {
+    $rootScope.$state = $state;
+    $rootScope.$stateParams = $stateParams;
+  });
+/*
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
@@ -18,4 +23,4 @@ angular.module('snippetUiApp', ['ngRoute', 'ngAnimate'])
       .otherwise({
         redirectTo: '/'
       });
-  });
+  }); */
