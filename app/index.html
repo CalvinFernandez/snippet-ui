@@ -34,7 +34,12 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-      <div class="container no-margin no-padding" ng-view=""></div>
+    <!--  <div class="container no-margin no-padding" ng-view=""></div>-->
+    <!-- main ui view -->
+    <div ui-view='header'></div>
+
+    <div ui-view class='container no-margin no-padding' ></div>
+
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
     <script>
@@ -54,8 +59,10 @@
         <script src="bower_components/angular-resource/angular-resource.js"></script>
         <script src="bower_components/angular-cookies/angular-cookies.js"></script>
         <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-        <script src="bower_components/angular-route/angular-route.js"></script>
+
+        <!-- <script src="bower_components/angular-route/angular-route.js"></script> -->
         <script src="bower_components/angular-animate/angular-animate.js"></script>
+
         <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
         <!-- endbuild -->
 

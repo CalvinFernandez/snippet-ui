@@ -187,3 +187,35 @@ li.no-styling {
 .double-navfix-bottom {
   margin-bottom: 100px;
 }
+
+.options {
+  position: absolute;
+  top: 0px; 
+  left: 0px; 
+  bottom: 0px;
+
+  width: 75%;    
+  height: 100%
+}
+
+.options * .list > li {
+  border-top: 1px solid #333;
+  border-bottom: 1px solid #080808;
+  padding: 10px;
+  font-size: 18px;
+}
+
+.options * .list > li:active {
+  border: 1px solid #111;
+  background-color: #333;
+}
+
+.options * .list > li:hover {
+  cursor: pointer;
+}
+
+.inverse {
+  background-color: #222222;
+  border-color: #080808;
+  color: #DDD;
+}
