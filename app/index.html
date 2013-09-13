@@ -36,9 +36,21 @@
     <!-- Add your site or application content here -->
     <!--  <div class="container no-margin no-padding" ng-view=""></div>-->
     <!-- main ui view -->
-    <div ui-view='header'></div>
 
-    <div ui-view class='container no-margin no-padding' ></div>
+    <div class='options inverse' sidebar-show='show.options' sidebar-show-overlaps='slide-over-container'>
+      <div class='container navfix-top'>
+        <ul class='list'>
+          <li class='no-styling'><i class="icon-music"></i> Songs </li>
+          <li class='no-styling'><i class="icon-group"></i> Contacts </li>
+          <li class='no-styling'> Unread </li>
+          <li class='no-styling'></li>
+          <li class='no-styling'><i class="icon-puzzle-piece"></i> Settings </li>
+          <li class='no-styling'><i class="icon-key"></i> Sign Out </li>
+        </ul>
+      </div>
+    </div>
+
+    <div ui-view id='slide-over-container' class='container no-padding'></div>
 
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
@@ -76,6 +88,7 @@
         <script src="scripts/directives/liSong.js"></script>
         <script src="scripts/directives/playButton.js"></script>
         <script src="scripts/controllers/contacts.js"></script>
+        <script src='scripts/directives/sidebarShow.js'></script>
         <!-- endbuild -->
 </body>
 </html>

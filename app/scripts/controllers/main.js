@@ -1,8 +1,11 @@
 'use strict';
 
 angular.module('snippetUiApp')
-  .controller('MainCtrl', function ($scope, $state, Conversations) {
-
+  .controller('MainCtrl', function ($scope, $rootScope, $state, Conversations) {
+  
+  $rootScope.show = {};
+  $rootScope.hide = {};
+  
   $scope.conversations = Conversations.all();
   $scope.me = Conversations.me();
 
@@ -11,10 +14,6 @@ angular.module('snippetUiApp')
   }
 
   $scope.toggleOptions = function() {
-    if ($state.current.name === 'inbox.options') {
-      $state.go('inbox');
-    } else {
-      $state.go('inbox.options');
-    }
+    $rootScope.show.options = !$rootScope.show.options;    
   }
 });
