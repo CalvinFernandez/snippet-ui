@@ -1,21 +1,3 @@
-<div class='navbar navbar-inverse navbar-fixed-top'>
-  <div class='container'>
-    <div class='row'>
-      <div class='col-xs-2 vertical-align-nav'>
-        <a ui-sref='^' type="button" class="btn btn-primary">
-          <small path-name='$state.$current.parent.name'></small>
-        </a>
-      </div>
-      <div class='col-xs-8 center-text'>
-        <h3 class='vertical-align-nav-text'> 
-          {{conversation.recipient.name}}
-        </h3>
-      </div>
-    </div>
-  </div>
-</div>
-
-
 <div class='container navfix-top double-navfix-bottom'>
   <div ng-repeat='message in conversation.messages' class='row'>
     <div ng-show='message.author.number === me.number'> 
@@ -48,25 +30,6 @@
     </div>
   </div>
 </div>
-
-<!--
-<div ng-show='snippetPanel' class='navbar navbar-inverse navfix-top'>
-  <div class='container'>
-    <div class='row'>
-      <div ng-click='snippetPanel = !snippetPanel' class='col-xs-3 vertical-align-nav'>
-        <button  type="button" class="btn btn-primary">
-          <small>{{conversation.recipient.name}}</small>
-      </button>
-      </div>
-      <div class='col-xs-9'>
-        <h3 class='vertical-align-nav-text'> 
-          Select a Song
-        </h3>
-      </div>
-    </div>
-  </div>
-</div>
--->
 
 <div ng-show='newMessageSong' class='songFooter alert-info vertical-align-nav'>
   <div class='container'>

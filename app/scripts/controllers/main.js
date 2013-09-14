@@ -9,7 +9,8 @@ angular.module('snippetUiApp')
   $scope.conversations = Conversations.all();
   $scope.me = Conversations.me();
 
-  $scope.toggleOptions = function() {
-    $rootScope.show.options = !$rootScope.show.options;    
+  $scope.back = function() {
+    $state.go('^');
   }
+
 });
