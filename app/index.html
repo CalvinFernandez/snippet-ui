@@ -37,20 +37,19 @@
     <!--  <div class="container no-margin no-padding" ng-view=""></div>-->
     <!-- main ui view -->
 
-    <div class='options inverse' sidebar-show='show.options' sidebar-show-overlaps='slide-over-container'>
+    <div ng-controller='SidebarCtrl' class='options inverse' sidebar-show='show.options' sidebar-show-overlaps='slide-over-container'>
       <div class='container navfix-top'>
         <ul class='list'>
-          <li class='no-styling'><i class="icon-music"></i> Songs </li>
-          <li class='no-styling'><i class="icon-group"></i> Contacts </li>
-          <li class='no-styling'> Unread </li>
-          <li class='no-styling'></li>
-          <li class='no-styling'><i class="icon-puzzle-piece"></i> Settings </li>
-          <li class='no-styling'><i class="icon-key"></i> Sign Out </li>
+          <li ng-repeat='category in categories' class='no-styling' ng-class="{ active: $state.includes('{{category.path}}')}">
+          <a class='no-styling' ng-click="navigate('{{category.path}}')">
+              <i class='{{category.icon}}'></i> {{category.name}}
+            </a>
+          </li>
         </ul>
       </div>
     </div>
 
-    <div ui-view id='slide-over-container' class='container no-padding'></div>
+    <div ui-view='mainView' id='slide-over-container' class='container no-padding'></div>
 
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
@@ -82,13 +81,18 @@
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/conversation.js"></script>
+        <script src="scripts/controllers/sidebar.js"></script>
+        <script src="scripts/controllers/songs.js"></script>
+        <script src="scripts/controllers/contacts.js"></script>
+        <script src="scripts/controllers/settings.js"></script>
+
         <script src="scripts/services/Conversations.js"></script>
         <script src="scripts/services/Songs.js"></script>
         <script src="scripts/directives/liConversation.js"></script>
         <script src="scripts/directives/liSong.js"></script>
         <script src="scripts/directives/playButton.js"></script>
-        <script src="scripts/controllers/contacts.js"></script>
         <script src='scripts/directives/sidebarShow.js'></script>
+        <script src='scripts/directives/pathname.js'></script>
         <!-- endbuild -->
 </body>
 </html>

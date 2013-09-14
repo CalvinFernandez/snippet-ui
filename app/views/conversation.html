@@ -2,8 +2,8 @@
   <div class='container'>
     <div class='row'>
       <div class='col-xs-2 vertical-align-nav'>
-        <a href='/' type="button" class="btn btn-primary">
-          <small>Inbox</small>
+        <a ui-sref='^' type="button" class="btn btn-primary">
+          <small>{{parentName}}</small>
         </a>
       </div>
       <div class='col-xs-8 center-text'>
@@ -94,7 +94,7 @@
   <div class='container'> 
     <div class='row vertical-align-nav'>
       <div class='col-xs-2'>
-        <button ng-click='snippetPanel = !snippetPanel' type="button" class="btn btn-primary">
+        <button ui-sref='.song' type="button" class="btn btn-primary">
           <span class='glyphicon glyphicon-play-circle'></span>
         </button>
       </div>
