@@ -24,9 +24,9 @@ angular.module('snippetUiApp')
             var width = $(overlappingDiv).width();
             $(overlappingDiv).css({
               'width': width,
-              'margin-left': '75%',
+              'margin-left': '50%',
             });
-            $(document.body).css('overflow', 'hidden');
+            $("#mobile-overflow-fix").css('overflow', 'hidden');
 
           } else {
             $element.hide();
@@ -35,7 +35,7 @@ angular.module('snippetUiApp')
               'margin-left': 'auto'
             }); 
 
-            $(document.body).css('overflow', 'auto');
+            $("#mobile-overflow-fix").css('overflow', 'auto');
           }
         }); 
       }
