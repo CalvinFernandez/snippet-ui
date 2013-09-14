@@ -52,6 +52,8 @@ angular.module('snippetUiApp')
     return {
       all: function () {
         return songs;
-      }
+      },
+
+      selected: ''
     };
   });

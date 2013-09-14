@@ -6,7 +6,7 @@ angular.module('snippetUiApp')
     var sizes = ['icon', 'icon-large', 'icon-2x', 'icon-3x', 'icon-4x'];
 
     return {
-      template: '<i ng-hide="playing || !loaded" ng-click="toggleSong()" class="icon-play {{iconSize}}"></i>' + 
+      template: '<i ng-hide="playing || !loaded" ng-click="toggleSong()" class="icon-play-circle {{iconSize}}"></i>' + 
       '<i ng-show="playing && loaded" ng-click="toggleSong()" class="icon-pause {{iconSize}}"></i>' + 
       '<i ng-hide="loaded" class="icon-spinner {{iconSize}}"></i>',
         

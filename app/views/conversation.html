@@ -2,8 +2,8 @@
   <div class='container'>
     <div class='row'>
       <div class='col-xs-2 vertical-align-nav'>
-        <a href='/' type="button" class="btn btn-primary">
-          <small>Inbox</small>
+        <a ui-sref='^' type="button" class="btn btn-primary">
+          <small path-name='$state.$current.parent.name'></small>
         </a>
       </div>
       <div class='col-xs-8 center-text'>
@@ -16,7 +16,7 @@
 </div>
 
 
-<div ng-hide='snippetPanel' class='container navfix-top double-navfix-bottom'>
+<div class='container navfix-top double-navfix-bottom'>
   <div ng-repeat='message in conversation.messages' class='row'>
     <div ng-show='message.author.number === me.number'> 
       <div class='mine'>
@@ -49,6 +49,7 @@
   </div>
 </div>
 
+<!--
 <div ng-show='snippetPanel' class='navbar navbar-inverse navfix-top'>
   <div class='container'>
     <div class='row'>
@@ -65,17 +66,9 @@
     </div>
   </div>
 </div>
+-->
 
-<div ng-show='snippetPanel' class='container navfix-top navfix-bottom'>
-  <ul>
-    <li class='no-styling message row' ng-repeat='song in songs'>
-    <div li-song></div>
-    </li>
-  </ul>
-</div>
-
-
-<div ng-show='newMessageSong && !snippetPanel' class='songFooter alert-info vertical-align-nav'>
+<div ng-show='newMessageSong' class='songFooter alert-info vertical-align-nav'>
   <div class='container'>
     <div class='row'>
       <div class='col-xs-2'>
@@ -83,19 +76,19 @@
       <div class='col-xs-8 no-wrap overflow-ellipsis'>
         {{newMessageSong.name}}, {{newMessageSong.artist}}   
       </div>
-      <div ng-click="newMessageSong = ''" class='col-xs-2'>
+      <div ng-click="removeSong()" class='col-xs-2'>
         <span class='glyphicon glyphicon-remove'></span>
       </div>
     </div>
   </div>
 </div>
 
-<div ng-hide='snippetPanel' class='footer'>
+<div class='footer'>
   <div class='container'> 
     <div class='row vertical-align-nav'>
       <div class='col-xs-2'>
-        <button ng-click='snippetPanel = !snippetPanel' type="button" class="btn btn-primary">
-          <span class='glyphicon glyphicon-play-circle'></span>
+        <button ui-sref='.picksong' type="button" class="btn btn-primary">
+          <i class="icon-music"></i> 
         </button>
       </div>
       <div class='col-xs-7'>

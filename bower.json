@@ -12,10 +12,14 @@
     "angular-cookies": "~1.0.7",
     "angular-sanitize": "~1.0.7",
     "angular-animate": "latest",
-    "angular-route": "latest"
+    "angular-route": "latest",
+    "angular-ui-router": "latest"
   },
   "devDependencies": {
     "angular-mocks": "~1.0.7",
     "angular-scenario": "~1.0.7"
+  },
+  "resolutions": {
+    "angular": "1.2.0-rc.2"
   }
 }
