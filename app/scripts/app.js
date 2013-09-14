@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('snippetUiApp', ['ui.router'])
+angular.module('snippetUiApp', ['ui.router', 'ngAnimate'])
   .run(function($rootScope, $state, $stateParams) {
     $rootScope.$state = $state;
     $rootScope.$stateParams = $stateParams;
@@ -17,7 +17,7 @@ angular.module('snippetUiApp', ['ui.router'])
           'mainView': {
             templateUrl: 'views/home.html',
             controller: 'MainCtrl'
-          }
+          },
         }
       })
       .state('home.messages', {
@@ -25,12 +25,12 @@ angular.module('snippetUiApp', ['ui.router'])
         templateUrl: 'views/home.messages.html',
         controller: function($scope, $state, Conversations) {
           $scope.conversations = Conversations.all();
-        } 
+        }
       })
       .state('home.messages.conversation', {
         url: 'conversations/:id',
         views: {
-          'mainView@': {
+          '@home': {
             templateUrl: 'views/conversation.html',
             controller: 'ConversationCtrl'
           }
@@ -39,7 +39,7 @@ angular.module('snippetUiApp', ['ui.router'])
       .state('home.messages.conversation.picksong', {
         url: '/songs',
         views: {
-          'mainView@': {
+          '@home': {
             templateUrl: 'views/songs.html',
             controller: 'SongsCtrl'
           }
@@ -54,28 +54,10 @@ angular.module('snippetUiApp', ['ui.router'])
         url: 'contacts',
         templateUrl: 'views/contacts.html',
         controller: 'ContactsCtrl' 
-      })
+       })
       .state('home.settings', {
         url: 'settings',
         templateUrl: 'views/settings.html',
         controller: 'SettingsCtrl' 
       })
-
-
-      /*$routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
-      })
-      .when('/contacts', {
-        templateUrl: 'views/contacts.html',
-        controller: 'ContactsCtrl'
-      })
-      .when('/:number', {
-        templateUrl: 'views/conversation.html',
-        controller: 'ConversationCtrl'
-      })
-      .otherwise({
-        redirectTo: '/'
-      });*/
   }); 

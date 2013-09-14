@@ -2,9 +2,12 @@
   <div class='container'>
     <div class='row'>
       <div class='col-xs-2 vertical-align-nav'>
-        <button class='btn' ng-click='toggleOptions()'>
-          <i class="icon-reorder"></i>
-        </button>
+        <a root-hide='$state.$current.parent.name' type='button' class='btn btn-primary' ng-click='back()'>
+          <small path-name='$state.$current.parent.name'></small>
+        </a>
+        <a root-show='$state.$current.parent.name' type='button' class='btn btn-primary' ng-click='show.options = !show.options'>
+          <i class='icon-reorder'></i>
+        </a>
       </div>
       <div class='col-xs-8 center-text'>
         <h3 class='vertical-align-nav-text' path-name='$state.current.name'></h3>
