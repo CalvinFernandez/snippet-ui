@@ -24,7 +24,7 @@ angular.module('snippetUiApp')
             var width = $(overlappingDiv).width();
             $(overlappingDiv).css({
               'width': width,
-              'margin-left': '50%',
+              'margin-left': '65%',
             });
             $("#mobile-overflow-fix").css('overflow', 'hidden');
 
