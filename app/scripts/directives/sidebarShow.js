@@ -26,7 +26,7 @@ angular.module('snippetUiApp')
               'width': width,
               'margin-left': '75%',
             });
-            $(document.body).css('overflow', 'hidden');
+            $("#mobile-overflow-fix").css('overflow', 'hidden');
 
           } else {
             $element.hide();
@@ -35,7 +35,7 @@ angular.module('snippetUiApp')
               'margin-left': 'auto'
             }); 
 
-            $(document.body).css('overflow', 'auto');
+            $("#mobile-overflow-fix").css('overflow', 'auto');
           }
         }); 
       }
