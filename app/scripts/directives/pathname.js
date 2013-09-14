@@ -2,8 +2,6 @@
 
 angular.module('snippetUiApp')
   .directive('pathName', function () {
-    var value = '';
-    var elem = {};
 
     function parsePath(path) {
       var paths = path.split('.');
@@ -15,16 +13,12 @@ angular.module('snippetUiApp')
       elem: {},
 
       link: function($scope, $element, $attrs) {
-        elem = $element;
-        elem.html(parsePath(value));
-      },
+        var value = $scope.$eval($attrs.pathName);
+        $element.html(parsePath(value));
 
-      controller: function($scope, $state) {
-        value = $state.current.name 
-
-        $scope.$watch('$state.current.name', function(newValue, oldValue) {
+        $scope.$watch($attrs.pathName, function(newValue, oldValue) {
           if (newValue !== oldValue) {
-            elem.html(parsePath(newValue));
+            $element.html(parsePath(newValue));
           }
         });
       }

@@ -33,6 +33,15 @@ angular.module('snippetUiApp', ['ui.router'])
           }
         }
       })
+      .state('home.messages.conversation.picksong', {
+        url: '/songs',
+        views: {
+          'mainView@': {
+            templateUrl: 'views/songs.html',
+            controller: 'SongsCtrl'
+          }
+        }
+      })
       .state('home.songs', {
         url: 'songs',
         templateUrl: 'views/songs.html',

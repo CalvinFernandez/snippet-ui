@@ -1,2 +1,33 @@
-<h1> songs are here </h1
-  <p> hello jello </p>
+<div class='navbar navbar-inverse navbar-fixed-top'>
+  <div class='container'>
+    <div class='row'>
+      <div class='col-xs-2 vertical-align-nav'>
+        <a ui-sref='^' type="button" class="btn btn-primary">
+          <small path-name='$state.$current.parent.name'></small>
+        </a>
+      </div>
+      <div class='col-xs-8 center-text'>
+        <h3 class='vertical-align-nav-text'> 
+          Songs
+        </h3>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class='container navfix-top navfix-bottom'>
+  <ul>
+    <li class='no-styling message row' ng-repeat='song in songs'>
+      <div class="col-xs-2 vertical-align">
+        <play-button src="song.src" size="3"></play-button>
+      </div>
+      <div ng-click="selectSong(song)" class="col-xs-8 ">
+        <h3 class="no-wrap overflow-ellipsis"> {{song.name}} </h3>
+          <small> {{song.artist}}, {{song.album}}</small>
+      </div>
+      <div ng-click="selectSong(song)"class="col-xs-2 vertical-align">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+      </div>
+    </li>
+  </ul>
+</div>
