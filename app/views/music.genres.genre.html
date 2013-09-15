@@ -1,0 +1,25 @@
+<ul class="nav nav-tabs">
+  <li class="active">
+    <a href=''>{{genre.title}}</a>
+  </li>
+</ul>
+
+<div class='container no-padding navfix-bottom'>
+  <table class='table table-condensed'>
+    <tbody>
+      <tr ng-class="{stripe: $index % 2 === 0}" ng-repeat='song in songs'>  
+        <td ng-click='selectSong(song)'>
+          <i class='icon-share'></i>
+        </td>
+        <td>
+          {{song.name}} 
+        </td>
+        <td>
+          <a>
+            <i class='icon-ellipsis-horizontal'></i>  
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

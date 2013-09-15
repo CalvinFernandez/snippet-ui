@@ -1,11 +1,11 @@
 'use strict';
 
 angular.module('snippetUiApp')
-  .factory('Conversations', function (Songs) {
+  .factory('Conversations', function (Music) {
     // Service logic
     // ...
     
-    var songs = Songs.all();
+    var songs = Music.all();
 
     var _me = {
       'number': 0,

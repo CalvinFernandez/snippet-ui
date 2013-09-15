@@ -1,0 +1,27 @@
+[
+  {
+    "id": 0,
+    "title": "Birthday",  
+    "songs": [0]   
+  },
+  {
+    "id": 1,
+    "title": "Christmas",
+    "songs": [1, 2]
+  },
+  {
+    "id": 2,
+    "title": "Mother's Day",
+    "songs": [2]
+  },
+  { 
+    "id": 3,
+    "title": "Romance", 
+    "songs": [3] 
+  },
+  {
+    "id": 4,
+    "title": "Dinner",
+    "songs": [4]
+  }
+]

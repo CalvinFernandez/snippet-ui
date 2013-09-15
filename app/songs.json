@@ -1,0 +1,42 @@
+[
+    {
+      "id": 0,
+      "name": "Happy Birthday",  
+      "artist": "The Beatles",
+      "album": "The White Album",
+      "length": "2:44",
+      "src": "/audio/birthday.mp3"
+    },
+    {
+      "id": 1,
+      "name": "Mele Kalikimaka",
+      "artist": "Bing Crosby",
+      "album": "",
+      "length": "3:23",
+      "src": "/audio/hawaii.mp3"
+    },
+    {
+      "id": 2,
+      "name": "Mama I'm coming home",
+      "artist": "Ozzy Osbourne",
+      "album": "No More Tears",
+      "length": "4:15",
+      "src": "/audio/coming_home.mp3"
+    },
+    {
+      "id": 3,
+      "name": "Tiny Dancer",
+      "artist": "Billy Joel",
+      "album": "Madman Across the Water",
+      "length": "6:01",
+      "src": "/audio/tiny_dancer.mp3"
+    },
+    {
+      "id": 4,
+      "name": "Chicken Fried",
+      "artist": "Zac Brown Band",
+      "album": "Home Grown",
+      "length": "4:56",
+      "src": "/audio/chicken_fried.mp3"
+    }
+]
