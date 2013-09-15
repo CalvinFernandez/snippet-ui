@@ -223,17 +223,10 @@ li.no-styling {
   color: #DDD;
 }
 
-.fade-enter.ng-enter {
-  -webkit-transition: 1s linear all; /* Safari/Chrome */
-  -moz-transition: 1s linear all; /* Firefox */
-  -o-transition: 1s linear all; /* Opera */
-  transition: 1s linear all; /* IE10+ and Future Browsers */
-       
-       /* The animation preparation code */
-  opacity: 0;
+.inverse-text {
+  color: #DDD;      
 }
 
-.fade-enter.ng-enter.ng-enter-active {
-   /* The animation code itself */
-   opacity: 1;
- }
+table * .stripe {
+  background-color: #dddddd;
+}

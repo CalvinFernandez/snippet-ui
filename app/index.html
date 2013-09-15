@@ -38,7 +38,7 @@
     <!--  <div class="container no-margin no-padding" ng-view=""></div>-->
     <!-- main ui view -->
 
-    <div ng-controller='SidebarCtrl' class='options inverse ng-cloak' sidebar-show='show.options' sidebar-show-overlaps='slide-over-container'>
+    <div ng-controller='SidebarCtrl' class='options inverse ng-cloak' sidebar-show='options' sidebar-show-overlaps='slide-over-container'>
       <div class='navfix-top'>
         <ul class='list no-padding'>
           <li ng-repeat='category in categories' class='no-styling' ng-class="{ active: $state.includes('{{category.path}}')}">
@@ -50,7 +50,7 @@
       </div>
     </div>
 
-    <div ui-view='mainView' id='slide-over-container' class='container no-padding' ng-animate='fade-enter'></div>
+    <div ui-view='mainView' id='slide-over-container' class='container no-padding'></div>
 
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
@@ -83,12 +83,13 @@
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/conversation.js"></script>
         <script src="scripts/controllers/sidebar.js"></script>
-        <script src="scripts/controllers/songs.js"></script>
+        <script src="scripts/controllers/music.js"></script>
         <script src="scripts/controllers/contacts.js"></script>
         <script src="scripts/controllers/settings.js"></script>
+        <script src="scripts/controllers/navbar.js"></script>
 
         <script src="scripts/services/Conversations.js"></script>
-        <script src="scripts/services/Songs.js"></script>
+        <script src="scripts/services/Music.js"></script>
         <script src="scripts/directives/liConversation.js"></script>
         <script src="scripts/directives/liSong.js"></script>
         <script src="scripts/directives/playButton.js"></script>
