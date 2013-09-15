@@ -1,16 +1,16 @@
 'use strict';
 
 angular.module('snippetUiApp')
-  .controller('ConversationCtrl', function ($scope, $state, Conversations, Songs) {
+  .controller('ConversationCtrl', function ($scope, $state, Conversations, Music) {
     
     var index = $state.params.id;
     $scope.me = Conversations.me();
 
     $scope.conversation = Conversations.all()[index];
-    $scope.songs = Songs.all();
+    $scope.songs = Music.all();
 
     $scope.newMessageText = '';
-    $scope.newMessageSong = Songs.selected;
+    $scope.newMessageSong = Music.selected;
 
     //  Update unread convo //
     $scope.conversation.unread = false; 
@@ -21,7 +21,7 @@ angular.module('snippetUiApp')
     };
 
     $scope.removeSong = function() {
-      Songs.selected = '';
+      Music.selected = '';
       $scope.newMessageSong = '';
     };
 
@@ -40,7 +40,7 @@ angular.module('snippetUiApp')
       $scope.conversation.messages.push(newMessage);
 
       //  Reset ui values //
-      Songs.selected = '';
+      Music.selected = '';
       $scope.newMessageSong = '';
 
       $scope.newMessageText = '';

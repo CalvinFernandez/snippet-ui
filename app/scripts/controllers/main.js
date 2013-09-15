@@ -10,7 +10,7 @@ angular.module('snippetUiApp')
   $scope.me = Conversations.me();
 
   $scope.back = function() {
-    $state.go('^');
+    var previous = $rootScope.$from.pop();
+    $state.go(previous.state, previous.params);
   }
-
 });

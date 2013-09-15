@@ -4,22 +4,78 @@ angular.module('snippetUiApp', ['ui.router', 'ngAnimate'])
   .run(function($rootScope, $state, $stateParams) {
     $rootScope.$state = $state;
     $rootScope.$stateParams = $stateParams;
+    $rootScope.options = false;
+
+    $rootScope.$from = [{state: 'home.messages', params: ''}];
+
+    $rootScope.$on('$stateChangeSuccess', 
+      //  Assign previous state to
+      //  root scope so we can navigate 
+      //  back and forth
+    function(ev, to, toParams, from, fromParams) {
+      $rootScope.$from.push({
+        state: from,
+        params: fromParams
+      });    
+    });
   })
   .config(function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider
-      .otherwise('/');
+      .otherwise('/messages');
 
     $stateProvider
-      .state('home', {
-        url: '/',
+      .state('messages', {
+        url: '/messages',
         abstract: true,
         views: {
           'mainView': {
-            templateUrl: 'views/home.html',
-            controller: 'MainCtrl'
-          },
+            templateUrl: 'views/messages.html'
+          }
         }
       })
+      .state('messages.list', {
+        url: '',  
+        templateUrl: 'views/messages.list.html',
+        controller: function($scope, $state, Conversations) {
+          $scope.conversations = Conversations.all();
+        }
+      }) 
+      .state('messages.conversation', {
+        url: '/conversations/:id',
+        templateUrl: 'views/messages.conversation.html',
+        controller: 'ConversationCtrl'
+      })
+      .state('music', {
+        url: '/music',
+        abstract: true,
+        views: {
+          'mainView': {
+            templateUrl: 'views/music.html',
+          }
+        }
+      })
+      .state('music.all', {
+        url: '',
+        templateUrl: 'views/music.all.html', 
+        controller: 'SongsCtrl'
+      })
+      .state('music.genres', {
+        url: '',    
+        templateUrl: 'views/music.genres.html',
+        controller: 'GenresCtrl'
+      })
+      .state('music.genres.genre', {
+        url: '/genres/:id',
+        views:  {
+          '@music': {
+            templateUrl: 'views/music.genres.genre.html',
+            controller: 'GenreCtrl'
+          }  
+        }
+      })
+      //.state('music.
+
+      /*
       .state('home.messages', {
         url: '',
         templateUrl: 'views/home.messages.html',
@@ -50,6 +106,10 @@ angular.module('snippetUiApp', ['ui.router', 'ngAnimate'])
         templateUrl: 'views/songs.html',
         controller: 'SongsCtrl' 
       })
+      .state('home.songs.info', {
+        templateUrl: 'views/songs.html',
+        controller: 'SongsCtrl' 
+      })
       .state('home.contacts', {
         url: 'contacts',
         templateUrl: 'views/contacts.html',
@@ -60,4 +120,5 @@ angular.module('snippetUiApp', ['ui.router', 'ngAnimate'])
         templateUrl: 'views/settings.html',
         controller: 'SettingsCtrl' 
       })
+      */
   }); 
