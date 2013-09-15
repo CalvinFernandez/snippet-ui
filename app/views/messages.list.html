@@ -1,6 +1,6 @@
 <ul class='row'>
   <li class='no-styling message row' ng-repeat='convo in conversations'>
-    <a class='no-styling' ui-sref='home.messages.conversation({id: $index})'>
+    <a class='no-styling' ui-sref='messages.conversation({id: $index})'>
       <div class='col-xs-2'>
         <span ng-show='convo.unread' class='glyphicon glyphicon-unchecked unread vertical-align'></span>
       </div>
