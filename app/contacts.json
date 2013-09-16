@@ -1,0 +1,32 @@
+[
+  {
+    "id": 0,
+    "name": "Gale",
+    "email": "gale@thebluestuff.com"
+  },
+  {
+    "id": 1,
+    "name": "Skyler",
+    "email": "skyler@thecarwash.com"
+  },
+  {
+    "id": 2,
+    "name": "Eli",
+    "email": "eli@lyricoo.com"
+  },
+  {
+    "id": 3,
+    "name": "Calvin",
+    "email": "calvin@lyricoo.com"
+  },
+  {
+    "id": 4,
+    "name": "Libby",
+    "email": "libby@lyricoo.com"
+  },
+  {
+    "id": 5, 
+    "name": "Meredith",
+    "email": "meredith@lyricoo.com"
+  }
+]
