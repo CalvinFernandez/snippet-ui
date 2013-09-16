@@ -45,6 +45,10 @@ angular.module('snippetUiApp', ['ui.router', 'ngAnimate', 'ngSanitize'])
         templateUrl: 'views/messages.conversation.html',
         controller: 'ConversationCtrl'
       })
+      .state('messages.new', {
+        url: '/new?id',
+        templateUrl: 'views/messages.conversation.html'
+      })
       .state('music', {
         url: '/music',
         abstract: true,

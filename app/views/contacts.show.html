@@ -3,7 +3,7 @@
   <div class='well'> 
     {{contact.email}}
   </div>
-  <button class='btn btn-primary'>
+  <button ui-sref='messages.new({id: contact.id})' class='btn btn-primary'>
     Send a Message
   </button>
 </div>
