@@ -2,6 +2,12 @@
 
 angular.module('snippetUiApp')
   .controller('ConversationCtrl', function ($scope, $state, Conversations, Music) {
+
+    $scope.header.leftBtn = '<small>Messages</small>';
+    $scope.header.headerName = 'Conversation';
+    $scope.header.leftBtnFn = function() {
+      window.history.back();      
+    }
     
     var index = $state.params.id;
     $scope.me = Conversations.me();

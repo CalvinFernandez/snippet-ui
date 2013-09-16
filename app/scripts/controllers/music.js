@@ -3,8 +3,17 @@
 angular.module('snippetUiApp')
   .controller('SongsCtrl', function ($scope, $state, Music) {
      
+    $scope.header.headerName = 'Songs';
     if ($state.data.caller.name === 'messages.conversation') {
-      $scope.calledFromConversation = true;
+      $scope.header.leftBtn = '<small>Conversation</small>';
+      $scope.header.leftBtnFn = function() {
+        window.history.back();      
+      }
+    } else {
+      $scope.header.leftBtn = "<i class='icon-reorder'></i>";
+      $scope.header.leftBtnFn = function() {
+        $scope.sidebar.show = !$scope.sidebar.show;        
+      }
     }
 
     $scope.songs = Music.all();
