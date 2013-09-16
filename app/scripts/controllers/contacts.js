@@ -1,10 +1,18 @@
 'use strict';
 
 angular.module('snippetUiApp')
-  .controller('ContactsCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
+  .controller('ContactsCtrl', function ($scope, $state, Contacts) {
+    $scope.contacts = {};
+
+    Contacts.all(function(response) {
+      $scope.contacts = response.data; 
+    });  
+
+    $scope.newContact = {};
+
+    $scope.saveContact = function() {
+      $scope.newContact.id = $scope.contacts.length;
+      $scope.contacts.push($scope.newContact);
+      $scope.newContact = {};   
+    }
+  })

@@ -1,0 +1,15 @@
+<div class='container no-padding'>
+  <table class='table'>
+    <tbody>
+      <tr ng-repeat='contact in contacts'>
+        <td>
+        </td>
+        <td ui-sref='contacts.show({id: contact.id})'>
+          {{contact.name}} 
+        </td>
+        <td>
+          <i class='icon-chevron-right'></i>
+        </td>
+    </tbody>
+  </table>
+</div>
