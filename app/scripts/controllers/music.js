@@ -2,23 +2,29 @@
 
 angular.module('snippetUiApp')
   .controller('SongsCtrl', function ($scope, $state, Music) {
-    $scope.headers = ['', 'Song', 'Length']; 
+     
+    if ($state.data.caller.name === 'messages.conversation') {
+      $scope.calledFromConversation = true;
+    }
 
     $scope.songs = Music.all();
+
+    $scope.genres = Music.genres();
+    $scope.selectGenre = function(genre) {
+      $scope.genre = genre;
+      $state.go('music.genre');
+    }
+
     $scope.selectSong = function(song) {
       Music.selected = song; 
-      if ($state.includes('home.messages.conversation.picksong')) {
-          $state.go('^');  
-      } else if ($state.includes('home.songs')) {
-        $state.go('home.messages.new');
-      }
+      $scope.selectedSong = song; 
     }
   })
   .controller('GenresCtrl', function($scope, $state, Music) {
-    $scope.genres = Music.genres();    
-
+    //$scope.genres = Music.genres();    
   })
   .controller('GenreCtrl', function($scope, $state, $stateParams, Music) {
-    $scope.genre = Music.genre($stateParams.id); 
-       
+    //$scope.genre = Music.genre($stateParams.id); 
+    //$scope.songs = Music.all();
+    $state.go('.list');   
   });
