@@ -2,10 +2,10 @@
   <div class='container'>
     <div class='row'>
       <div class='col-xs-2 vertical-align-nav'>
-        <a ng-hide ='$state.includes("music")' type='button' class='btn btn-primary' ng-click='back()'>
+        <a ng-show= 'calledFromConversation' type='button' class='btn btn-primary' ng-click='back()'>
           <small path-name='$state.$current.parent.name'></small>
         </a>
-        <a ng-show ='$state.includes("music")' type='button' class='btn btn-primary' ng-click='toggleOptions()'>
+        <a ng-hide ='calledFromConversation' type='button' class='btn btn-primary' ng-click='toggleOptions()'>
           <i class='icon-reorder'></i>
         </a>
       </div>
@@ -22,9 +22,20 @@
   <li ng-class="{ active: $state.includes('music.all')}">
     <a ui-sref="music.all">All</a>
   </li>
-  <li ng-class="{ active: $state.includes('music.genres')}">
+  <li ng-class="{ active: $state.includes('music.genres') || $state.includes('music.genre')}">
     <a ui-sref="music.genres">Genres</a>
   </li>
 </ul>
 
 <div class='navfix-top' ui-view></div>
+
+<div ng-show='selectedSong' class='inverse-text footer container'> 
+  <div class='row vertical-align-nav'>
+    <div class='col-xs-10'>
+      <small>{{selectedSong.name}}, {{selectedSong.artist}}</small>
+    </div>
+    <div class='col-xs-2'>
+      <play-button src='selectedSong.src' size='1'></play-button>
+    </div>
+  </div>
+</div>

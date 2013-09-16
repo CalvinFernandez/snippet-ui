@@ -1,7 +1,7 @@
 <div class='container no-padding navfix-bottom'>
   <table class='table table-condensed'>
     <tbody>
-      <tr ui-sref='.genre({id: genre.id})' ng-class="{stripe: $index % 2 === 0}" ng-repeat='genre in genres'>  
+      <tr ng-click='selectGenre(genre)' ng-class="{stripe: $index % 2 === 0}" ng-repeat='genre in genres'>  
         <td>
           {{genre.title}} 
         </td>
