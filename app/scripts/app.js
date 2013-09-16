@@ -6,18 +6,15 @@ angular.module('snippetUiApp', ['ui.router', 'ngAnimate'])
     $rootScope.$stateParams = $stateParams;
     $rootScope.options = false;
 
-    $rootScope.$from = [{state: 'home.messages', params: ''}];
-
+    $state.data = {};  
     $rootScope.$on('$stateChangeSuccess', 
       //  Assign previous state to
       //  root scope so we can navigate 
       //  back and forth
-    function(ev, to, toParams, from, fromParams) {
-      $rootScope.$from.push({
-        state: from,
-        params: fromParams
-      });    
-    });
+      function(ev, to, toParams, from, fromParams) {
+        $state.data.caller = from;      
+      }
+    );
   })
   .config(function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider
@@ -51,27 +48,27 @@ angular.module('snippetUiApp', ['ui.router', 'ngAnimate'])
         views: {
           'mainView': {
             templateUrl: 'views/music.html',
+            controller: 'SongsCtrl'
           }
         }
       })
       .state('music.all', {
         url: '',
         templateUrl: 'views/music.all.html', 
-        controller: 'SongsCtrl'
       })
       .state('music.genres', {
         url: '',    
         templateUrl: 'views/music.genres.html',
         controller: 'GenresCtrl'
       })
-      .state('music.genres.genre', {
-        url: '/genres/:id',
-        views:  {
-          '@music': {
-            templateUrl: 'views/music.genres.genre.html',
-            controller: 'GenreCtrl'
-          }  
-        }
+      .state('music.genre', {
+        url: '',
+        templateUrl: 'views/music.genre.html',
+        controller: 'GenreCtrl'
+      })
+      .state('music.genre.list', {
+        url: '',    
+        templateUrl: 'views/music.all.html'
       })
       //.state('music.
 
