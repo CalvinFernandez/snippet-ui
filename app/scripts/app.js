@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('snippetUiApp', ['ui.router', 'ngAnimate', 'ngSanitize'])
+angular.module('snippetUiApp', ['ui.router', 'ngAnimate', 'ngSanitize', 'ngTouch'])
   .run(function($rootScope, $state, $stateParams) {
     $rootScope.$state = $state;
     $rootScope.$stateParams = $stateParams;

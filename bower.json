@@ -13,7 +13,8 @@
     "angular-sanitize": "~1.0.7",
     "angular-animate": "latest",
     "angular-route": "latest",
-    "angular-ui-router": "latest"
+    "angular-ui-router": "latest",
+    "angular-touch": "latest"
   },
   "devDependencies": {
     "angular-mocks": "~1.0.7",
