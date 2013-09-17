@@ -6,6 +6,8 @@ var mountFolder = function (connect, dir) {
   return connect.static(require('path').resolve(dir));
 };
 
+var proxySnippet = require('grunt-connect-proxy/lib/utils').proxyRequest; 
+
 // # Globbing
 // for performance reasons we're only matching one level down:
 // 'test/spec/{,*/}*.js'
@@ -16,6 +18,9 @@ module.exports = function (grunt) {
   // load all grunt tasks
   require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
   grunt.loadNpmTasks('grunt-forever');
+
+  // Start proxy
+  grunt.loadNpmTasks('grunt-connect-proxy');
 
   // configurable paths
   var yeomanConfig = {
@@ -58,11 +63,25 @@ module.exports = function (grunt) {
         // Change this to '0.0.0.0' to access the server from outside.
         hostname: 'localhost'
       },
+      proxies: [
+      {
+        context: '/api',
+        host: '54.214.232.157', 
+        port: 8080,
+        rewrite: {
+          '/api': ''
+        }
+      }],
       livereload: {
         options: {
           middleware: function (connect) {
             return [
+<<<<<<< HEAD
               //lrSnippet,
+=======
+              proxySnippet, 
+              lrSnippet,
+>>>>>>> 6831a6aaa2c3acc1118394ee840e68a949d32c4c
               mountFolder(connect, '.tmp'),
               mountFolder(connect, yeomanConfig.app)
             ];
@@ -299,6 +318,7 @@ module.exports = function (grunt) {
     grunt.task.run([
       'clean:server',
       'concurrent:server',
+      'configureProxies',
       'connect:livereload',
       'open',
       'watch'
