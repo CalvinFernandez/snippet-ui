@@ -2,7 +2,7 @@
 
 angular.module('snippetUiApp')
   .factory('Contacts', function ($http) {
-    var path = 'contacts.json'
+    var path = '/api/users/all'
 
     var contacts = $http.get(path);
 
