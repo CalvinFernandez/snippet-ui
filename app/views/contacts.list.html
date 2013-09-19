@@ -4,8 +4,11 @@
       <tr ng-repeat='contact in contacts'>
         <td>
         </td>
-        <td ui-sref='contacts.show({id: contact.id})'>
-          {{contact.name}} 
+        <td ng-show='contact.first_name || contact.last_name' ng-click='select(contact)'>
+          {{contact.first_name}} {{contact.last_name}}
+        </td>
+        <td ng-hide='contact.first_name && contact.last_name' ng-click='select(contact)'>
+          {{contact.email}}
         </td>
         <td>
           <i class='icon-chevron-right'></i>
