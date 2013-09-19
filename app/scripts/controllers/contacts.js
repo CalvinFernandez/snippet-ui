@@ -2,12 +2,8 @@
 
 angular.module('snippetUiApp')
   .controller('ContactsCtrl', function ($scope, $state, Contacts) {
-    $scope.contacts = {};
 
-    Contacts.all(function(response) {
-      $scope.contacts = response.data; 
-    });  
-
+    $scope.contacts = Contacts.all();
     $scope.newContact = {};
 
     $scope.saveContact = function() {

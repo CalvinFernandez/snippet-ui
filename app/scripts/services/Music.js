@@ -2,18 +2,17 @@
 
 angular.module('snippetUiApp')
   .factory('Music', function ($http) {
-    var songPath = 'songs.json';
-    var genrePath = 'genres.json';
+    var songsPath = '/api/songs/all';
+    var categoriesPath = '/api/categories/all';
+    var categoryPath = '/api/categories/songs';
     
-    var songs = $http.get(songPath).then(function(resp) {
+    var songs = $http.get(songsPath).then(function(resp) {
       return resp.data;
     });
     
-    var genres = $http.get(genrePath).then(function(resp) {
+    var genres = $http.get(categoriesPath).then(function(resp) {
       return resp.data;     
     });
-    
-    
 
 
     // Public API here
@@ -28,11 +27,15 @@ angular.module('snippetUiApp')
       },
 
       genre: function(id) {
-        for (var i = 0; i < genres.$$v.length; i ++) {
-          if (genres.$$v[i].id == id) {
-            return genres.$$v[i];
+        return $http({
+          method: 'GET', 
+          url: categoryPath,        
+          params: {
+            id: id
           }
-        }          
+        }).then(function(resp) {
+          return resp.data;
+        })
       },
 
       selected: ''

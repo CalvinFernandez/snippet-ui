@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('snippetUiApp')
-  .controller('MainCtrl', function ($scope, $rootScope, $state, Conversations) {
+  .controller('MainCtrl', function ($scope, $rootScope, $state, Session) {
+
     $scope.header = {}; 
     $scope.sidebar = {
       show: false
@@ -10,8 +11,13 @@ angular.module('snippetUiApp')
     $scope.sidebar.categories = [
       {'name': 'Messages', 'path': 'messages.list', 'icon': 'icon-envelope'}, 
       {'name': 'Songs', 'path': 'music.all', 'icon': 'icon-music'}, 
-      {'name': 'Contacts', 'path': 'contacts.list', 'icon': 'icon-group'}, 
-      {'name': 'Settings', 'path': 'settings', 'icon': 'icon-puzzle-piece'}, 
-      {'name': 'Sign Out', 'path': 'signout', 'icon': 'icon-key'}];     
+      {'name': 'Contacts', 'path': 'contacts.list', 'icon': 'icon-group'}];
+
+    if (Session.loggedIn()) {
+      //{'name': 'Settings', 'path': 'settings', 'icon': 'icon-puzzle-piece'}, 
+      $scope.sidebar.categories.push({'name': 'Log Out', 'path': 'logout', 'icon': 'icon-key'});     
+    } else {
+      $scope.sidebar.categories.push({'name': 'Log In', 'path': 'login', 'icon': 'icon-key'});
+    }
 
   });

@@ -1,43 +1,38 @@
-<div class='container navfix-top double-navfix-bottom'>
-  <div ng-repeat='message in conversation.messages' class='row'>
-    <div ng-show='message.author.number === me.number'> 
-      <div class='mine'>
-        <div class='col-xs-12'>
-          <blockquote>
-            <p>
-              {{ message.text }}
-              <div ng-show='message.song'> 
-                <small> click to listen <play-button src='message.song.src' size='0'></play-button></small>
-              </div>
-            </p>
-          </blockquote>
-        </div>
+<nav ng-show ='newConversation' class='navbar navbar-default' role='navigation'>
+  <div class='container'>
+    <div class='row'>
+      <div class='input-group'>  
+        <input ng-model='newMessage.dstEmail' type='text' class='form-control'>
+        <span ng-click="$state.go('contacts.list')" class='input-group-addon'>+</span>
       </div>
     </div>
-    <div ng-show='message.author.number !== me.number'>
-      <div class='theirs'>
-        <div class='col-xs-12'>
-          <blockquote class='pull-right'>
-            <p>
-              {{ message.text }}
-              <div ng-show='message.song'> 
-                <small> click to listen <play-button src='message.song.src' size='0'></play-button></small>
-              </div>
-            </p>
-          </blockquote>
-        </div>
+  </div>
+</nav>
+
+<div class='container double-navfix-bottom'>
+  <div ng-repeat='message in conversation' class='row'>
+    <div ng-class='{mine: message.sent, theirs: !message.sent }'>
+      <div class='col-xs-12'>
+        <blockquote>
+          <p>
+            {{ message.content }}
+            <div ng-show='message.song'> 
+              <small> click to listen <play-button src='message.song.path' size='0'></play-button></small>
+            </div>
+          </p>
+        </blockquote>
       </div>
     </div>
   </div>
 </div>
 
-<div ng-show='newMessageSong' class='songFooter alert-info vertical-align-nav'>
+<div ng-show='newMessage.song' class='songFooter alert-info vertical-align-nav'>
   <div class='container'>
     <div class='row'>
       <div class='col-xs-2'>
       </div>
       <div class='col-xs-8 no-wrap overflow-ellipsis'>
-        {{newMessageSong.name}}, {{newMessageSong.artist}}   
+        {{newMessage.song.title}}, {{newMessage.song.artist}}   
       </div>
       <div ng-click="removeSong()" class='col-xs-2'>
         <span class='glyphicon glyphicon-remove'></span>
@@ -55,7 +50,7 @@
         </button>
       </div>
       <div class='col-xs-7'>
-        <input ng-model='newMessageText' type="text" class="input-style">
+        <input ng-model='newMessage.content' type="text" class="input-style">
       </div>
       <div class='col-xs-3'>
         <button ng-click='sendMessage()' type="button" class="btn btn-primary">Send</button>

@@ -1,100 +1,48 @@
 'use strict';
 
 angular.module('snippetUiApp')
-  .factory('Conversations', function (Music) {
+  .factory('Conversations', function ($http) {
     // Service logic
     // ...
+    var messagesPath = '/api/messages/all';
     
-    var songs = Music.all();
-
-    var _me = {
-      'number': 0,
-      'name': 'Walter White'
-    }; 
-
-    var conversations = [
-      { 
-      'recipient': {
-        'number': 1,
-        'name': 'Gale'
-      },
-      'unread': true,
-
-      'messages': [{
-        'author': {
-          'number': 0,
-          'name': 'Walter White'
-        },
-        'song': songs[0], 
-        'listened': 'true', 
-        'text': 'Hey Gale, hows it going?'
-      }, 
-      {
-        'author': {
-          'number': 1,
-          'name': 'Gale'
-        },
-        'text': 'Hey, doing fine. Just making some coffee.'
-      },
-      {
-        'author': {
-          'number': 1,
-          'name': 'Gale'
-        },
-        'song': songs[1], 
-        'listened': 'false',
-        'text': 'I think youll like this'
-      }
-      ]
-    },
-    {
-    'recipient': {
-        'number': 2,
-        'name': 'Skyler'
-      },
-      'unread': true,
-
-      'messages': [{
-        'author': {
-          'number': 2,
-          'name': 'Skyler'
-        },
-        'text': 'Hey honey, where are you?'
-      }, 
-      {
-        'author': {
-          'number': 0,
-          'name': 'Walter White'
-        },
-        'text': 'Hey Skyler, I"m still at work, don"t worry, Ill be back soon!'
-      },
-      {
-        'author': {
-          'number': 0,
-          'name': 'Walter White'
-        },
-        'text': "What are we having for dinner?"
-      },
-      {
-        'author': {
-          'number': 2,
-          'name': 'Skyler'
-        },
-        'text': "How does this sound?",
-        'song': songs[4], 
-        'listened': 'false' 
-      }
-      ]
-    }
-    ];
-
+    var messagePath = '/api/users/messages';
+    var newMessagePath = '/api/messages/new';
+    
     return {
       // Public API 
-      all: function () {
-        return conversations;
+      all: function (id) {
+        return $http({
+          method: 'GET',
+          url: messagesPath,
+          params: {
+            id: id
+          }
+        }).then(function(resp) {
+          return resp.data;
+        });
       },
-      me: function() {
-        return _me;
+
+      show: function(userId, contactId) {
+        return $http({
+          method: 'GET',
+          url: messagePath,
+          params: {
+            id: userId,
+            contact_id: contactId
+          } 
+        }).then(function(resp) {
+          return resp.data;
+        });
+      }, 
+      newMessage: function(_params) {
+        return $http({
+          method: 'POST',
+          url: newMessagePath,
+          data: _params
+        }).then(function(resp) {
+          return resp.data;
+        });
       }
     };
   });

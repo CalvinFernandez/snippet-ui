@@ -60,14 +60,14 @@
         <div class='container'>
           <div class='row'>
             <div class='col-xs-2 vertical-align-nav'>
-              <a type='button' class='btn btn-primary' ng-click='header.leftBtnFn()' ng-bind-html='header.leftBtn'>
+              <a ng-show='header.leftBtn' type='button' class='btn btn-primary' ng-click='header.leftBtnFn()' ng-bind-html='header.leftBtn'>
               </a>
             </div>
             <div class='col-xs-7 center-text'>
               <h3 class='inverse-text vertical-align-nav-text'> {{header.headerName}} </h3>
             </div>
             <div class='col-xs-3 vertical-align-nav'>
-              <a type='button' class='btn btn-primary' ng-click='header.rightBtnFn()' ng-bind-html='header.rightBtn'>
+              <a ng-show='header.rightBtn' type='button' class='btn btn-primary' ng-click='header.rightBtnFn()' ng-bind-html='header.rightBtn'>
               </a>
             </div>
           </div>
@@ -110,6 +110,7 @@
         <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
+
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/conversation.js"></script>
@@ -118,10 +119,12 @@
         <script src="scripts/controllers/contacts.js"></script>
         <script src="scripts/controllers/settings.js"></script>
         <script src="scripts/controllers/navbar.js"></script>
+        <script src="scripts/controllers/login.js"></script>
 
         <script src="scripts/services/Conversations.js"></script>
         <script src="scripts/services/Music.js"></script>
         <script src="scripts/services/Contacts.js"></script>
+        <script src="scripts/services/Session.js"></script>
 
         <script src="scripts/directives/liConversation.js"></script>
         <script src="scripts/directives/liSong.js"></script>
@@ -130,6 +133,9 @@
         <script src='scripts/directives/rootShow.js'></script>
 
         <script src='scripts/directives/pathname.js'></script>
+
+        <script src='scripts/http-auth-interceptor.js'></script>
+        <script src='scripts/interceptor.js'></script>
         <!-- endbuild -->
   </div>
 </body>

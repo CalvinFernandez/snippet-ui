@@ -12,10 +12,10 @@
 <div ng-show='selectedSong' class='inverse-text footer container'> 
   <div class='row vertical-align-nav'>
     <div class='col-xs-10'>
-      <small>{{selectedSong.name}}, {{selectedSong.artist}}</small>
+      <small>{{selectedSong.title}}, {{selectedSong.artist}}</small>
     </div>
     <div class='col-xs-2'>
-      <play-button src='selectedSong.src' size='1'></play-button>
+      <play-button src='selectedSong.path' size='1'></play-button>
     </div>
   </div>
 </div>
