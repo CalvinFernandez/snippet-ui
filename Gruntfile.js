@@ -63,7 +63,7 @@ module.exports = function (grunt) {
       proxies: [
       {
         context: '/api',
-        host: '54.214.232.157', 
+        host: 'localhost', 
         port: 8080,
         rewrite: {
           '/api': ''
