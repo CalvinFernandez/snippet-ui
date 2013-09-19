@@ -1,9 +1,9 @@
 <div class='container'>
-  <h2> {{contact.name}} </h2>  
+  <h2> {{contact.first_name}} {{contact.last_name}}</h2>  
   <div class='well'> 
     {{contact.email}}
   </div>
-  <button ui-sref='messages.new({id: contact.id})' class='btn btn-primary'>
+  <button ui-sref='messages.conversation({id: contact.id})' class='btn btn-primary'>
     Send a Message
   </button>
 </div>

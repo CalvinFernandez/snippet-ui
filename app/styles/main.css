@@ -24,9 +24,34 @@ body {
   margin-right: 40px;
 }
 
+.mine * blockquote {
+  border-color: #468847;
+}
+
 .theirs {
  text-align:right; 
  margin-left: 40px;
+}
+
+.theirs * blockquote {
+  float: right;
+  padding-right: 15px;
+  padding-left: 0;
+  border-right: 5px solid #c09853;
+  border-left: 0;
+}
+
+.theirs * blockquote p,
+.theirs * blockquote small {
+  text-align: right;
+}
+
+.theirs * blockquote small:before {
+  content: '';
+}
+
+.theirs * blockquote small:after {
+  content: '\00A0 \2014';
 }
 
 .unread {
