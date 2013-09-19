@@ -28,7 +28,11 @@ angular.module('snippetUiApp')
       },
 
       get: function() {
+
         var session = $cookieStore.get('session');
+        if (!this.signedTOS()) {
+          return $state.go('tos');
+        } 
         if (!session) {
           $state.go('login');  
         } else {
@@ -42,6 +46,14 @@ angular.module('snippetUiApp')
 
       destroy: function() {
         $cookieStore.remove('session');
+      },
+
+      signedTOS: function() {
+        return $cookieStore.get('tos');  
+      },
+
+      signTOS: function() {
+        $cookieStore.put('tos', true);
       }
     
     }
