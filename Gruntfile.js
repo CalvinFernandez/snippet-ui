@@ -76,12 +76,7 @@ module.exports = function (grunt) {
         options: {
           middleware: function (connect) {
             return [
-<<<<<<< HEAD
               //lrSnippet,
-=======
-              proxySnippet, 
-              lrSnippet,
->>>>>>> 6831a6aaa2c3acc1118394ee840e68a949d32c4c
               mountFolder(connect, '.tmp'),
               mountFolder(connect, yeomanConfig.app)
             ];
