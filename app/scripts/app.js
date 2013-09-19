@@ -34,6 +34,25 @@ angular.module('snippetUiApp', ['ui.router', 'ngAnimate', 'ngCookies', 'ngSaniti
       .otherwise('/messages');
 
     $stateProvider
+      .state('tos', {
+        url: '/terms',
+        views: {
+          'mainView': {
+            templateUrl: 'views/tos.html',
+            controller: function($state, $scope, Session, $http) {
+
+              $http.get('termsOfService.txt').then(function(resp) {
+                $scope.terms = resp.data;
+              });
+
+              $scope.accept = function() {
+                Session.signTOS(); 
+                $state.go('messages.list');
+              }  
+            }
+          }
+        }
+      })
       .state('login', {
         url: '/login',
         views: {
@@ -81,6 +100,8 @@ angular.module('snippetUiApp', ['ui.router', 'ngAnimate', 'ngCookies', 'ngSaniti
         url: '/conversations/:id',
         templateUrl: 'views/messages.conversation.html',
         controller: function($scope, $state, $stateParams, Conversations, Session) {
+          
+          var session = Session.get();
 
           $scope.newMessage = {
             dstEmail: Session.speakingWith.email,
@@ -96,7 +117,7 @@ angular.module('snippetUiApp', ['ui.router', 'ngAnimate', 'ngCookies', 'ngSaniti
 
 
           if ($stateParams.id) {
-            $scope.conversation = Conversations.show(Session.get().id, $stateParams.id);
+            $scope.conversation = Conversations.show(session.id, $stateParams.id);
             $scope.newConversation = false;
           }
           $scope.removeSong = function() {
@@ -105,7 +126,7 @@ angular.module('snippetUiApp', ['ui.router', 'ngAnimate', 'ngCookies', 'ngSaniti
           }
           $scope.sendMessage = function() {
             $scope.conversation = Conversations.newMessage({  
-              src_id: Session.get().id,
+              src_id: session.id,
               dst_email: $scope.newMessage.dstEmail, 
               content: $scope.newMessage.content,
               song_id: $scope.newMessage.song.id
@@ -118,6 +139,8 @@ angular.module('snippetUiApp', ['ui.router', 'ngAnimate', 'ngCookies', 'ngSaniti
         templateUrl: 'views/messages.conversation.html',
         controller: function($scope, $state, $stateParams, Session, Conversations) {
 
+          var session = Session.get();
+
           $scope.newMessage = {
             dstEmail: '',
             song: Session.selectedSong  
@@ -128,7 +151,7 @@ angular.module('snippetUiApp', ['ui.router', 'ngAnimate', 'ngCookies', 'ngSaniti
 
           $scope.sendMessage = function() {
             $scope.conversation = Conversations.newMessage({  
-              src_id: Session.get().id,
+              src_id: session.id,
               dst_email: $scope.newMessage.dstEmail, 
               content: $scope.newMessage.content,
               song_id: $scope.newMessage.song.id
