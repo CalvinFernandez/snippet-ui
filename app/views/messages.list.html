@@ -1,20 +1,21 @@
 <ul class='row'>
-  <li class='no-styling message row' ng-repeat='convo in conversations'>
-    <a class='no-styling' ui-sref='messages.conversation({id: $index})'>
-      <div class='col-xs-2'>
-        <span ng-show='convo.unread' class='glyphicon glyphicon-unchecked unread vertical-align'></span>
-      </div>
-      <div class='col-xs-8'>
-        <h1 class='overflow-ellipses no-wrap'>
-          {{convo.recipient.name}}
-        </h1>
-        <p class='overflow-ellipsis no-wrap'>
-          {{convo.messages[convo.messages.length - 1].text}}
-        </p>
-      </div>
-      <div class='col-xs-2 vertical-align'>
+  <li class='no-styling message row' ng-click="selectConversation(convo)" ng-repeat='convo in conversations'>
+    <div class='col-xs-2'>
+      <span ng-show='convo.unread' class='glyphicon glyphicon-unchecked unread vertical-align'></span>
+    </div>
+    <div class='col-xs-8'>
+      <h3 ng-show='convo.contact.first_name || convo.contact.last_name' class='overflow-ellipses no-wrap'>
+        {{convo.contact.first_name}} {{convo.contact.last_name}}
+      </h3>
+      <h3 ng-hide='convo.contact.first_name && convo.contact.last_name' class='overflow-ellipses no-wrap'>
+        {{convo.contact.email}}
+      </h3>
+      <p class='overflow-ellipsis no-wrap'>
+        {{convo.conversation[convo.conversation.length - 1].content}}
+      </p>
+    </div>
+    <div class='col-xs-2 vertical-align'>
       <span class='glyphicon glyphicon-chevron-right'></span>
     </div>
-    </a>
   </li>
 </ul>

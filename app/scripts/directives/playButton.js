@@ -12,18 +12,13 @@ angular.module('snippetUiApp')
         
       restrict: 'E',
 
-      scope: {
-        src: '=',
-        size: '='  
-      },
-
       link: function postLink($scope, $element, $attrs) {
         $scope.audioElement = document.createElement('audio');
-        $scope.iconSize = sizes[$scope.size];
 
         $scope.playing = false;
         $scope.loaded = true; //false
 
+        
         $scope.audioElement.addEventListener('ended', function() {
           //
           //  Toggle back to not playing //
@@ -34,30 +29,29 @@ angular.module('snippetUiApp')
             });
         });
 
-         //
-         // Removed because doesn't automatically load in mobile. 
-         // Audio must be user initialized
-         //
-         
-        /*
-        $scope.audioElement.addEventListener('canplaythrough', function() {
-          //
-          //  Wait for loading event to finish before allowing 
-          //  playback
-          //  
-          $scope.$apply(
-            function() {
-              $scope.loaded = true;
-            });
-        });
-        */
+        var source = $scope.$eval($attrs.src);
+        var size = $scope.$eval($attrs.size);
 
-        $scope.audioElement.src = $scope.src;  
+        if (source) {
+          $scope.audioElement.src = "/api" + source;      
+        }
+        if (size) {
+          $scope.iconSize = size;
+        }
+        
+        $scope.$watch($attrs.size, function(newValue, oldValue) {
+          if (newValue !== oldValue) {
+            $scope.iconSize = newValue;
+          }
+        });
+        $scope.$watch($attrs.src, function(newValue, oldValue) {
+          if (newValue !== oldValue) {
+            $scope.audioElement.src = "/api" + newValue;
+          }
+        }); 
       },
 
       controller: function($scope, $element, $attrs) {
-
-        
 
         $scope.toggleSong = function() {
           $scope.playing = !$scope.playing;

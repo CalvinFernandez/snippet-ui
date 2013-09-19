@@ -1,0 +1,75 @@
+[
+  { 
+    "recipient": {
+      "number": 1,
+      "name": "Gale"
+    },
+    "unread": true,
+
+    "messages": [
+    {
+      "author": {
+        "number": 0,
+        "name": "Walter White"
+      },
+      "song": 0, 
+      "listened": "true", 
+      "text": "Hey Gale, how's it going?"
+    }, 
+    {
+      "author": {
+        "number": 1,
+        "name": "Gale"
+      },
+      "text": "Hey, doing fine. Just making some coffee."
+    },
+    {
+      "author": {
+        "number": 1,
+        "name": "Gale"
+      },
+      "song": 1, 
+      "listened": "false",
+      "text": "I think you'll like this"
+    }]
+  },
+  {
+    "recipient": {
+      "number": 2,
+      "name": "Skyler"
+    },
+    "unread": true,
+
+    "messages": [
+    {
+      "author": {
+        "number": 2,
+        "name": "Skyler"
+      },
+      "text": "Hey honey, where are you?"
+    }, 
+    {
+      "author": {
+        "number": 0,
+        "name": "Walter White"
+      },
+      "text": "Hey Skyler, I'm still at work, don't worry, I'll be back soon!"
+    },
+    {
+      "author": {
+        "number": 0,
+        "name": "Walter White"
+      },
+      "text": "What are we having for dinner?"
+    },
+    {
+      "author": {
+        "number": 2,
+        "name": "Skyler"
+      },
+      "text": "How does this sound?",
+      "song": 4, 
+      "listened": "false" 
+    }]
+  }
+]

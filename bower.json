@@ -14,7 +14,8 @@
     "angular-animate": "latest",
     "angular-route": "latest",
     "angular-ui-router": "latest",
-    "angular-touch": "latest"
+    "angular-touch": "latest",
+    "underscore": "latest"
   },
   "devDependencies": {
     "angular-mocks": "~1.0.7",
