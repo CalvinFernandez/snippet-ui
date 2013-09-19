@@ -14,10 +14,15 @@ var proxySnippet = require('grunt-connect-proxy/lib/utils').proxyRequest;
 // use this if you want to recursively match all subfolders:
 // 'test/spec/**/*.js'
 
+
 module.exports = function (grunt) {
   // load all grunt tasks
   require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
+
+
+
   grunt.loadNpmTasks('grunt-forever');
+
 
   // Start proxy
   grunt.loadNpmTasks('grunt-connect-proxy');
@@ -34,6 +39,12 @@ module.exports = function (grunt) {
 
   grunt.initConfig({
     yeoman: yeomanConfig,
+
+    forever: {
+      options: {
+        index: 'node_modules/grunt-contrib-connect/tasks/connect.js'
+      }
+    },
     watch: {
       coffee: {
         files: ['<%= yeoman.app %>/scripts/{,*/}*.coffee'],
@@ -76,6 +87,7 @@ module.exports = function (grunt) {
         options: {
           middleware: function (connect) {
             return [
+	      proxySnippet,
               //lrSnippet,
               mountFolder(connect, '.tmp'),
               mountFolder(connect, yeomanConfig.app)
