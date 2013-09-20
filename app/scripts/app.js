@@ -1,12 +1,20 @@
 'use strict';
 
 angular.module('snippetUiApp', ['ui.router', 'ngCookies', 'ngSanitize', 'ngTouch', 'http-auth-interceptor'])
-  .run(function($rootScope, $state, $stateParams, Session) {
+  .run(function($rootScope, $state, $stateParams, Session, Validate) {
+    
+    $rootScope.validates('conversations', 'user', 'tos')
+    $rootScope.validates('conversation', 'user', 'tos')
+    $rootScope.validates('newConversation', 'user', 'tos')
+    $rootScope.validates('contacts', 'user', 'tos')
+
+
     $rootScope.$state = $state;
     $rootScope.$stateParams = $stateParams;
     $rootScope.options = false;
 
     $state.data = {};  
+
     $rootScope.$on('$stateChangeSuccess', 
       function(ev, to, toParams, from, fromParams) {
         $state.data.caller = from;      
