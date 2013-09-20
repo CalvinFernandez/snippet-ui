@@ -29,7 +29,7 @@ angular.module('snippetUiApp')
         //  Set the new session
         //
         Session.put(resp.data);
-        $state.go('messages.list');
+        $state.go('conversations');
       });
     }
   })

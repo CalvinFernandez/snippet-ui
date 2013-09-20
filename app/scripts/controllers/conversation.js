@@ -15,6 +15,9 @@ angular.module('snippetUiApp')
 
     Conversations.all(Session.getId()).then(function(resp) {
       $scope.conversations = resp.data;
+      if ($scope.conversations.length === 0) {
+	$('#hints1').show();
+      }
     });
 
     $scope.selectConversation = function(conversation) {
@@ -52,6 +55,9 @@ angular.module('snippetUiApp')
     if ($stateParams.id) {  
       Conversations.show(Session.getId(), $stateParams.id).then(function(resp){
         $scope.conversation = resp.data;
+	if ($scope.conversation.length === 0 ) {
+          $("#hints2").show();
+        }
       }) 
     }
 

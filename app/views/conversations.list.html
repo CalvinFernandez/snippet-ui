@@ -1,4 +1,4 @@
-<ul ng-show='conversations.length > 0' class='row'>
+<ul class='row'>
   <li class='no-styling message row' ng-click="selectConversation(convo)" ng-repeat='convo in conversations'>
     <div class='col-xs-2'>
       <span ng-show='convo.unread' class='glyphicon glyphicon-unchecked unread vertical-align'></span>
@@ -21,7 +21,7 @@
 </ul>
 
 <!-- Hint -->
-<div ng-hide='conversations.length === 0' class='jumbotron'>
+<div class='jumbotron hints' id='hints1'>
   <div class='container'>
     <h1>Welcome To Lyricoo!</h1>
     <br>

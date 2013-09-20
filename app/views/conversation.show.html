@@ -9,7 +9,7 @@
   </div>
 </nav>
 
-<div ng-hide='conversation.length === 0' class='container double-navfix-bottom'>
+<div class='container double-navfix-bottom'>
   <div ng-repeat='message in conversation' class='row'>
     <div ng-class='{mine: message.sent, theirs: !message.sent }'>
       <div class='col-xs-12'>
@@ -26,7 +26,7 @@
   </div>
 </div>
 
-<div ng-show='conversation.length === 0' class='jumbotron'>
+<div ng-cloak class='jumbotron hints' id='hints2'>
   <h1> You're on the Conversation page </h1>
   <div ng-show="$state.is('newConversation')" class='row'>
     <div class='col-xs-2'>

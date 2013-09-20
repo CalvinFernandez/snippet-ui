@@ -270,3 +270,11 @@ div.hover {
   height: 15% !important;
   z-index: 99999;
 }
+
+[ng\:cloak], [ng-cloak], .ng-cloak {
+  display: none !important;
+}
+
+.hints {
+  display: none;
+}
