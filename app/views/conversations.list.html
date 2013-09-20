@@ -1,10 +1,10 @@
-<ul>
-  <li class='no-styling message row' ng-click="selectConversation(convo)" ng-repeat='convo in conversations'>
-    <div class='col-xs-8'>
-      <h3 ng-show='convo.contact.first_name || convo.contact.last_name' class='overflow-ellipses no-wrap'>
+<ul class='no-padding no-margin'>
+  <li class='no-styling message overflow-ellipsis no-wrap' ng-click="selectConversation(convo)" ng-repeat='convo in conversations'>
+    <div class='col-xs-8 overflow-ellipsis no-wrap'>
+      <h3 ng-show='convo.contact.first_name || convo.contact.last_name' class='overflow-ellipsis no-wrap'>
         {{convo.contact.first_name}} {{convo.contact.last_name}}
       </h3>
-      <h3 ng-hide='convo.contact.first_name && convo.contact.last_name' class='overflow-ellipses no-wrap'>
+      <h3 ng-hide='convo.contact.first_name && convo.contact.last_name' class='overflow-ellipsis no-wrap'>
         {{convo.contact.email}}
       </h3>
       <p class='overflow-ellipsis no-wrap'>
