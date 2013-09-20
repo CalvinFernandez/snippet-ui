@@ -1,4 +1,4 @@
-<ul class='row'>
+<ul ng-show='conversations.length > 0' class='row'>
   <li class='no-styling message row' ng-click="selectConversation(convo)" ng-repeat='convo in conversations'>
     <div class='col-xs-2'>
       <span ng-show='convo.unread' class='glyphicon glyphicon-unchecked unread vertical-align'></span>
@@ -19,3 +19,28 @@
     </div>
   </li>
 </ul>
+
+<!-- Hint -->
+<div ng-hide='conversations.length === 0' class='jumbotron'>
+  <div class='container'>
+    <h1>Welcome To Lyricoo!</h1>
+    <br>
+    <br>
+    <div class='row'>
+      <div class='col-xs-2' ui-sref='newConversation'>
+        <a class='btn btn-primary'><i class='icon-plus'></i></a>
+      </div>
+      <div class='col-xs-10'>
+        <p> <strong>Click</strong> this button to send a Lyricoo to a friend</p>
+      </div>
+    </div>
+    <div class='row'>
+      <div class='col-xs-2' ng-click='sidebar.show = !sidebar.show'>
+        <a class='btn btn-primary'><i class='icon-reorder'></i></a>
+      </div>
+      <div class='col-xs-10'>
+        <p> <strong>Click</strong> this button to explore more options</p>
+      </div>
+    </div>
+  </div>
+</div>

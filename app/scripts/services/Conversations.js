@@ -18,9 +18,7 @@ angular.module('snippetUiApp')
           params: {
             id: id
           }
-        }).then(function(resp) {
-          return resp.data;
-        });
+        })
       },
 
       show: function(userId, contactId) {
@@ -31,9 +29,7 @@ angular.module('snippetUiApp')
             id: userId,
             contact_id: contactId
           } 
-        }).then(function(resp) {
-          return resp.data;
-        });
+        })
       }, 
       newMessage: function(_params) {
         return $http({
