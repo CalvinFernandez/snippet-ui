@@ -2,7 +2,7 @@
 
 angular.module('snippetUiApp')
   .controller('ConversationsCtrl', function ($scope, $state, Conversations, Session) {
-
+      
     $scope.header.headerName = 'Messages'
     $scope.header.leftBtn = "<i class='icon-reorder'></i>";
     $scope.header.leftBtnFn = function() {

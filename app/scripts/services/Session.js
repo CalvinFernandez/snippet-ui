@@ -28,6 +28,10 @@ angular.module('snippetUiApp')
       },
 
       getId: function() {
+        if (!this.signedTOS()) {
+          $state.go('tos');
+	  return;
+        } 
         var session = $cookieStore.get('session');
         if (session) {
           return session.id; 

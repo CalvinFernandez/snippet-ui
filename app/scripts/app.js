@@ -36,21 +36,17 @@ angular.module('snippetUiApp', ['ui.router', 'ngCookies', 'ngSanitize', 'ngTouch
     $stateProvider
       .state('tos', {
         url: '/terms',
-        views: {
-          'mainView': {
-            templateUrl: 'views/tos.html',
-            controller: function($state, $scope, Session, $http) {
+        templateUrl: 'views/tos.html',
+        controller: function($state, $scope, Session, $http) {
+	  $scope.header.headerName = 'Terms of Service';
+          $http.get('termsOfService.txt').then(function(resp) {
+            $scope.terms = resp.data;
+          });
 
-              $http.get('termsOfService.txt').then(function(resp) {
-                $scope.terms = resp.data;
-              });
-
-              $scope.accept = function() {
-                Session.signTOS(); 
-                $state.go('messages.list');
-              }  
-            }
-          }
+          $scope.accept = function() {
+            Session.signTOS(); 
+            $state.go('conversations');
+          }   
         }
       })
       .state('login', {
