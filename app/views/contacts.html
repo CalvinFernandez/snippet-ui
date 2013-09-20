@@ -1,2 +1,18 @@
-<div ui-view></div>
-
+<div class='container no-padding'>
+  <table class='table'>
+    <tbody>
+      <tr ng-repeat='contact in contacts'>
+        <td>
+        </td>
+        <td ng-show='contact.first_name || contact.last_name' ng-click='select(contact)'>
+          {{contact.first_name}} {{contact.last_name}}
+        </td>
+        <td ng-hide='contact.first_name && contact.last_name' ng-click='select(contact)'>
+          {{contact.email}}
+        </td>
+        <td>
+          <i class='icon-chevron-right'></i>
+        </td>
+    </tbody>
+  </table>
+</div>
