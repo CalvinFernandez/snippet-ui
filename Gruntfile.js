@@ -1,7 +1,7 @@
 // Generated on 2013-09-04 using generator-angular 0.3.1
 'use strict';
-var LIVERELOAD_PORT = 35729;
-var lrSnippet = require('connect-livereload')({ port: LIVERELOAD_PORT });
+//var LIVERELOAD_PORT = 35729;
+//var lrSnippet = require('connect-livereload')({ port: LIVERELOAD_PORT });
 var mountFolder = function (connect, dir) {
   return connect.static(require('path').resolve(dir));
 };
@@ -14,9 +14,15 @@ var proxySnippet = require('grunt-connect-proxy/lib/utils').proxyRequest;
 // use this if you want to recursively match all subfolders:
 // 'test/spec/**/*.js'
 
+
 module.exports = function (grunt) {
   // load all grunt tasks
   require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
+
+
+
+  grunt.loadNpmTasks('grunt-forever');
+
 
   // Start proxy
   grunt.loadNpmTasks('grunt-connect-proxy');
@@ -33,6 +39,12 @@ module.exports = function (grunt) {
 
   grunt.initConfig({
     yeoman: yeomanConfig,
+
+    forever: {
+      options: {
+        index: 'node_modules/grunt-contrib-connect/tasks/connect.js'
+      }
+    },
     watch: {
       coffee: {
         files: ['<%= yeoman.app %>/scripts/{,*/}*.coffee'],
@@ -41,18 +53,20 @@ module.exports = function (grunt) {
       coffeeTest: {
         files: ['test/spec/{,*/}*.coffee'],
         tasks: ['coffee:test']
-      },
+      }//,
+	/*
       livereload: {
         options: {
           livereload: LIVERELOAD_PORT
         },
         files: [
-          '<%= yeoman.app %>/{,*/}*.html',
-          '{.tmp,<%= yeoman.app %>}/styles/{,*/}*.css',
-          '{.tmp,<%= yeoman.app %>}/scripts/{,*/}*.js',
-          '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
-        ]
-      }
+		*/
+          //'<%= yeoman.app %>/{,*/}*.html',
+          //'{.tmp,<%= yeoman.app %>}/styles/{,*/}*.css',
+          //'{.tmp,<%= yeoman.app %>}/scripts/{,*/}*.js',
+          //'<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
+        //]
+      //}
     },
     connect: {
       options: {
@@ -73,8 +87,8 @@ module.exports = function (grunt) {
         options: {
           middleware: function (connect) {
             return [
-              proxySnippet, 
-              lrSnippet,
+	      proxySnippet,
+              //lrSnippet,
               mountFolder(connect, '.tmp'),
               mountFolder(connect, yeomanConfig.app)
             ];
