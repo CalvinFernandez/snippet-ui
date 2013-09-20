@@ -28,30 +28,16 @@ angular.module('snippetUiApp')
       },
 
       getId: function() {
-        if (!this.signedTOS()) {
-          $state.go('tos');
-	  return;
-        } 
         var session = $cookieStore.get('session');
         if (session) {
           return session.id; 
         } else {
-          $state.go('login');
-          return;
-	} 
+          return '';
+        } 
       },
 
       get: function() {
-
-        var session = $cookieStore.get('session');
-        if (!this.signedTOS()) {
-          return $state.go('tos');
-        } 
-        if (!session) {
-          $state.go('login');  
-        } else {
-          return session;
-        }
+        return $cookieStore.get('session');
       },
 
       put: function(sessionData) {
