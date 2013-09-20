@@ -36,10 +36,13 @@ angular.module('snippetUiApp')
     var removeText = function() {
       $scope.newMessage.content = '';  
     }
+    var removeHint = function() {
+      $("#hints2").hide();
+    }
 
     $scope.removeSong = removeSong;
 
-    $scope.header.headerName = 'Name';
+    $scope.header.headerName = '';
     $scope.header.leftBtn = '<small> Messages </small>';
     $scope.header.leftBtnFn = function() {
       window.history.back();
@@ -59,6 +62,8 @@ angular.module('snippetUiApp')
           $("#hints2").show();
         }
       }) 
+    } else {
+      $("#hints2").show();
     }
 
     $scope.sendMessage = function() {
@@ -93,5 +98,6 @@ angular.module('snippetUiApp')
       }
       removeSong();
       removeText(); 
+      removeHint();
     }
   });

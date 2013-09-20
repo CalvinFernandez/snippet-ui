@@ -8,12 +8,14 @@ body {
   border-bottom: 1px solid #ccc;
 }
 
+/*
 .message:hover {
   cursor: pointer;
   background-color: #eee;
-}
+}*/
 
-.message:active {
+
+.message.ng-click-active {
   color: #333333;
   border-color: #adadad;
   background-color: #ebebeb;
@@ -230,10 +232,12 @@ li.no-styling {
   font-size: 18px;
 }
 
-.options * .list > li.active {
+.options * .list > li.active,
+.options * .list > li.ng-click-active {
   background-color: #428bca;   
 }
-.options * .list > li:active {
+.options * .list > li:active,
+.options * .list > li.ng-click-active {
   border: 1px solid #111;
   background-color: #333;
 }
@@ -277,4 +281,12 @@ div.hover {
 
 .hints {
   display: none;
+  margin-bottom: 100px;
+}
+
+td.ng-click-active {
+  color: #333333;
+  border-color: #adadad;
+  background-color: #ebebeb;
+
 }

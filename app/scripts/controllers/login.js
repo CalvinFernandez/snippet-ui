@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('snippetUiApp')
-  .controller('LoginCtrl', function ($scope, $state, Session, $http) {
+  .controller('LoginCtrl', function ($scope, $rootScope, $state, Session, $http) {
 
     var path = '/api/users/sign_in';
 
@@ -28,12 +28,13 @@ angular.module('snippetUiApp')
         //
         //  Set the new session
         //
+	$rootScope.loggedIn = true;
         Session.put(resp.data);
         $state.go('conversations');
       });
     }
   })
-  .controller('LogoutCtrl', function ($scope, $state, Session, $http) {
+  .controller('LogoutCtrl', function ($scope, $rootScope, $state, Session, $http) {
     var path = '/api/users/sign_out';  
         
     $http({ 
@@ -44,6 +45,7 @@ angular.module('snippetUiApp')
       }
     }).then(function(response) {
       Session.destroy();
+      $rootScope.loggedIn = false;
       $state.go('login');
     });
   })

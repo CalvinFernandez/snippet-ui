@@ -31,8 +31,10 @@ angular.module('snippetUiApp')
         var session = $cookieStore.get('session');
         if (session) {
           return session.id; 
-        } 
-        return;
+        } else {
+          $state.go('login');
+          return;
+	} 
       },
 
       get: function() {

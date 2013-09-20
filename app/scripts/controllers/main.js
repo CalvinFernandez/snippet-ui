@@ -14,10 +14,12 @@ angular.module('snippetUiApp')
       {'name': 'Contacts', 'path': 'contacts', 'icon': 'icon-group'}];
 
     if (Session.loggedIn()) {
-      //{'name': 'Settings', 'path': 'settings', 'icon': 'icon-puzzle-piece'}, 
-      $scope.sidebar.categories.push({'name': 'Log Out', 'path': 'logout', 'icon': 'icon-key'});     
-    } else {
-      $scope.sidebar.categories.push({'name': 'Log In', 'path': 'login', 'icon': 'icon-key'});
+      $rootScope.loggedIn = true;      
+    }
+
+    $scope.navigate = function(path) {
+      $state.go(path);  
+      $scope.sidebar.show = !$scope.sidebar.show;
     }
 
   });

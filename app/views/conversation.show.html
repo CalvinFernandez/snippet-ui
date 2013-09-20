@@ -9,7 +9,7 @@
   </div>
 </nav>
 
-<div class='container double-navfix-bottom'>
+<div ng-show='conversation.length > 0' class='container double-navfix-bottom'>
   <div ng-repeat='message in conversation' class='row'>
     <div ng-class='{mine: message.sent, theirs: !message.sent }'>
       <div class='col-xs-12'>
@@ -27,37 +27,38 @@
 </div>
 
 <div ng-cloak class='jumbotron hints' id='hints2'>
-  <h1> You're on the Conversation page </h1>
+  <h3> You're on the Conversation page </h3>
+  <hr>
   <div ng-show="$state.is('newConversation')" class='row'>
-    <div class='col-xs-2'>
+    <div class='col-xs-4'>
       <i class='icon-long-arrow-up'></i></a>
     </div>
-    <div class='col-xs-10'>
+    <div class='col-xs-8'>
       <p> <strong>Type</strong> an email address</p>
     </div>
   </div>
 
   <div class='row'>
-    <div class='col-xs-2' ui-sref='music.all'>
+    <div class='col-xs-4' ui-sref='music.all'>
       <a class='btn btn-primary'><i class='icon-music'></i></a>
       </div>
-    <div class='col-xs-10'>
+    <div class='col-xs-8'>
       <p> <strong>Click</strong> to choose a Lyricoo.</p>
     </div>
   </div>
   <div class='row'>
-    <div class='col-xs-2'>
+    <div class='col-xs-4'>
       <i class='icon-long-arrow-down'></i></a>
     </div>
-    <div class='col-xs-10'>
+    <div class='col-xs-8'>
       <p> <strong>Type</strong> your message</p>
     </div>
   </div>
   <div class='row'>
-    <div class='col-xs-2' ng-click='sendMessage()'>
+    <div class='col-xs-4' ng-click='sendMessage()'>
       <a class='btn btn-primary'>Send</a>
     </div>
-    <div class='col-xs-10'>
+    <div class='col-xs-8'>
       <p> <strong>Click</strong> to send.</p>
     </div>
   </div>

@@ -1,8 +1,5 @@
-<ul class='row'>
+<ul>
   <li class='no-styling message row' ng-click="selectConversation(convo)" ng-repeat='convo in conversations'>
-    <div class='col-xs-2'>
-      <span ng-show='convo.unread' class='glyphicon glyphicon-unchecked unread vertical-align'></span>
-    </div>
     <div class='col-xs-8'>
       <h3 ng-show='convo.contact.first_name || convo.contact.last_name' class='overflow-ellipses no-wrap'>
         {{convo.contact.first_name}} {{convo.contact.last_name}}
