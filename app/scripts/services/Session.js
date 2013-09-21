@@ -8,6 +8,9 @@ angular.module('snippetUiApp')
     //  of multiple states
     //
 
+    var tempSession = '';
+    var tempTos = false;
+
     return {
       //
       //  Individual with whom user 
@@ -24,11 +27,11 @@ angular.module('snippetUiApp')
       //  Current session
       //
       loggedIn: function() {
-        return $cookieStore.get('session');    
+        return $cookieStore.get('session') || tempSession; 
       },
 
       getId: function() {
-        var session = $cookieStore.get('session');
+        var session = $cookieStore.get('session') || tempSession;
         if (session) {
           return session.id; 
         } else {
@@ -37,25 +40,27 @@ angular.module('snippetUiApp')
       },
 
       get: function() {
-        return $cookieStore.get('session');
+        return $cookieStore.get('session') || tempSession;
       },
 
       put: function(sessionData) {
         $cookieStore.put('session', sessionData);
+        tempSession = sessionData;
       }, 
 
       destroy: function() {
         $cookieStore.remove('session');
+        tempSession = '';
       },
 
       signedTOS: function() {
-        return $cookieStore.get('tos');  
+        return $cookieStore.get('tos') || tempTos; 
       },
 
       signTOS: function() {
         $cookieStore.put('tos', true);
+        tempTos = true;
       }
-    
     }
   });
 
