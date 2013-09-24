@@ -1,6 +1,6 @@
-angular.module('snippetUiApp').run(['$rootScope', '$location', function($rootScope, $state) {
+angular.module('snippetUiApp').run(['$rootScope', '$state', function($rootScope, $state) {
   $rootScope.$on('event:auth-loginRequired', function() {
-    $state.go('login');
+    //$state.go('login');
   });
 }]);
 

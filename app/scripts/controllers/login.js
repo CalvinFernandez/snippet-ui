@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('snippetUiApp')
-  .controller('LoginCtrl', function ($scope, $rootScope, $state, Session, $http) {
+  .controller('LoginCtrl', function ($scope, $rootScope, $state, Session, $http, Assert) {
 
     var path = '/api/users/sign_in';
 
@@ -26,11 +26,16 @@ angular.module('snippetUiApp')
         }
       }).then(function(resp) {
         //
-        //  Set the new session
+        //  Success
         //
-	$rootScope.loggedIn = true;
+        $rootScope.loggedIn = true;
         Session.put(resp.data);
         $state.go('conversations');
+      }, function(resp) {
+        //
+        //  Error
+        //
+        Assert(false, 'Your username or email is incorrect. Please retry'); 
       });
     }
   })

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('snippetUiApp', ['ui.router', 'ngCookies', 'ngSanitize', 'ngTouch', 'http-auth-interceptor'])
+angular.module('snippetUiApp', ['ui.router', 'ngCookies', 'ngSanitize', 'ngTouch'])//, 'http-auth-interceptor'])
   .run(function($rootScope, $state, $stateParams, Session, Validate) {
     
     $rootScope.validates('conversations', 'user', 'tos')
