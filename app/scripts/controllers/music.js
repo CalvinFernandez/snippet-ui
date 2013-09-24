@@ -31,7 +31,7 @@ angular.module('snippetUiApp')
     }
 
     $scope.selectSong = function(song) {
-      Session.selectedSong = song; 
+      Session.conversation.song = song; 
       $scope.selectedSong = song; 
     }
 

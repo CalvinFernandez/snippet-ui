@@ -31,7 +31,11 @@ angular.module('snippetUiApp', ['ui.router', 'ngCookies', 'ngSanitize', 'ngTouch
           // state clear the selected 
           // song
           //
-          Session.selectedSong = '';
+          Session.conversation = {
+            song: '',
+            email: '', 
+            content: ''     
+          };
         }
       }
     );
