@@ -2,7 +2,7 @@
   <div class='container'>
     <div class='row'>
       <div class='input-group'>  
-        <input placeholder='Enter an email address' ng-model='newMessage.dstEmail' type='email' class='form-control'>
+        <input placeholder='Enter an email address' ng-model='session.conversation.email' type='email' class='form-control'>
         <span ng-click="$state.go('contacts')" class='input-group-addon'>+</span>
       </div>
     </div>
@@ -65,13 +65,13 @@
 </div>
 
 
-<div ng-show='newMessage.song' class='songFooter alert-info vertical-align-nav'>
+<div ng-show='session.conversation.song' class='songFooter alert-info vertical-align-nav'>
   <div class='container'>
     <div class='row'>
       <div class='col-xs-2'>
       </div>
       <div class='col-xs-8 no-wrap overflow-ellipsis'>
-        {{newMessage.song.title}}, {{newMessage.song.artist}}   
+        {{session.conversation.song.title}}, {{session.conversation.song.artist}}   
       </div>
       <div ng-click="removeSong()" class='col-xs-2'>
         <span class='glyphicon glyphicon-remove'></span>
@@ -89,7 +89,7 @@
         </button>
       </div>
       <div class='col-xs-7'>
-        <input placeholder='Write a message...' ng-model='newMessage.content' type="text" class="input-style">
+        <input placeholder='Write a message...' ng-model='session.conversation.content' type="text" class="input-style">
       </div>
       <div class='col-xs-3'>
         <button ng-click='sendMessage()' type="button" class="btn btn-primary">Send</button>

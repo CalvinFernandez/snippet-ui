@@ -28,13 +28,14 @@ angular.module('snippetUiApp')
 
   .controller('ConversationCtrl', function($scope, $rootScope, $state, $stateParams, Conversations, Session, Assert) {
 
+    $scope.session = Session;
+
     var removeSong = function() {
-      $scope.newMessage.song = '';
-      Session.selectedSong = '';
+      $scope.session.conversation.song = '';
     }
 
     var removeText = function() {
-      $scope.newMessage.content = '';  
+      $scope.session.conversation.content = '';  
     }
     var removeHint = function() {
       $("#hints2").hide();
@@ -50,15 +51,12 @@ angular.module('snippetUiApp')
     $scope.header.rightBtn = '';
 
     $scope.conversation = [];
-    $scope.newMessage = {
-      song: Session.selectedSong
-    };
 
     // Not a new conversation 
     if ($stateParams.id) {  
       Conversations.show(Session.getId(), $stateParams.id).then(function(resp){
         $scope.conversation = resp.data;
-	if ($scope.conversation.length === 0 ) {
+        if ($scope.conversation.length === 0 ) {
           $("#hints2").show();
         }
       }) 
@@ -67,16 +65,16 @@ angular.module('snippetUiApp')
     }
 
     $scope.sendMessage = function() {
-      if (Assert($scope.newMessage.dstEmail || $stateParams.id, "Please select a contact or include an email address")) {
+      if (Assert($scope.session.conversation.email || $stateParams.id, "Please select a contact or include an email address")) {
         return;
       }        
       var message = {
         src_id: Session.getId(),      
-        content: $scope.newMessage.content, 
+        content: $scope.session.conversation.content, 
         sent: true, 
-        song: $scope.newMessage.song,
+        song: $scope.session.conversation.song,
         dst_id: $stateParams.id, 
-        dst_email: $scope.newMessage.dstEmail
+        dst_email: $scope.session.conversation.email
       };
 
       $scope.conversation.push(message);
@@ -85,15 +83,15 @@ angular.module('snippetUiApp')
         Conversations.newMessage({  
           src_id: Session.getId(),
           dst_id: $stateParams.id, 
-          content: $scope.newMessage.content,
-          song_id: $scope.newMessage.song.id
+          content: $scope.session.conversation.content,
+          song_id: $scope.session.conversation.song.id
         })
       } else {
         Conversations.newMessage({  
           src_id: Session.getId(),
-          dst_email: $scope.newMessage.dstEmail, 
-          content: $scope.newMessage.content,
-          song_id: $scope.newMessage.song.id
+          dst_email: $scope.session.conversation.email, 
+          content:   $scope.session.conversation.content,
+          song_id:   $scope.session.conversation.song.id
         })
       }
       removeSong();
